@@ -1,10 +1,9 @@
 <?php session_start();
 
-
 if ((isset($_SESSION['encargado'])) && ($_SESSION['encargado'] == 'admin')) {
-    header('Location: usuarios.php');
+    header('Location: admin.php');
 }
-if (isset($_SESSION['encargado'])) {
+if ((isset($_SESSION['encargado'])) && ($_SESSION['activo'] == 'si')) {
     header('Location: navegacion.php');
 }
 
@@ -40,14 +39,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($resultado = $daoAdmin->validarLogin($nombre_usuario, $password)) {
             $_SESSION['encargado'] = $resultado->nombre;
-            header('Location: usuarios.php');
+            header('Location: admin.php');
         }
-        
+
+        // Validamos el login del encargado y nos aseguramos de que el administrador lo tenga
+        // como "activo". En caso contrario, lo devuelve al Login y no le permite manipular
+        // sus exposiciones. A la vez, estas no aparecen en la página principal
         if($resultado = $daoEncargado->validarLogin($nombre_usuario, $password)){
             $_SESSION['encargado'] = $resultado->nombre_encargado;
             $_SESSION['id_encargado'] = $resultado->id_encargado;
             $_SESSION['id_galeria'] = $resultado->encargado_id_galeria;
-            header('Location: navegacion.php');
+            $_SESSION['activo'] = $resultado->activo;
+            if($_SESSION['activo'] == 'si') {
+                header('Location: navegacion.php');
+            } else {
+                session_destroy();
+                $_SESSION = array();
+                header('Location: login.php');
+            }
         } else {
             $errores .= '<li>Datos incorrectos o usuario no existe</li>';
         }

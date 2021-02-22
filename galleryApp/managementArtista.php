@@ -73,30 +73,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if(isset($_POST['actualizar'])) {
-        foreach ($_POST['check'] as $id) {
+        if(isset($_POST['check'])) {
+            foreach ($_POST['check'] as $id) {
 
-            $artista = new Artista();
-            $artista->__SET("id_artista", $id);
-            $artista->__SET("nombre_artista", $_POST["nombre$id"]);
-            $artista->__SET("pagina_personal", $_POST["pagina_personal$id"]);
-            $artista->__SET("email", $_POST["email$id"]);
-            $artista->__SET("telefono", $_POST["telefono$id"]);
-            $artista->__SET("descripcion", $_POST["descripcion$id"]);
+                $artista = new Artista();
+                $artista->__SET("id_artista", $id);
+                $artista->__SET("nombre_artista", $_POST["nombre$id"]);
+                $artista->__SET("pagina_personal", $_POST["pagina_personal$id"]);
+                $artista->__SET("email", $_POST["email$id"]);
+                $artista->__SET("telefono", $_POST["telefono$id"]);
+                $artista->__SET("descripcion", $_POST["descripcion$id"]);
 
-            $daoArtista->actualizar($artista);
+                $daoArtista->actualizar($artista);
+            }
+            $daoArtista->CloseConnection();
+            $daoArtista->__destruct();
+            header('Location: managementArtista.php');
+        } else {
+            $errores = '<li>No has seleccionado ningún artista para actualizar</li>';
         }
-        $daoArtista->CloseConnection();
-        $daoArtista->__destruct();
-        header('Location: managementArtista.php');
     }
 
     if(isset($_POST['seleccionar'])) {
-        $idArtistas = array();
-        foreach ($_POST['check'] as $id) {
-            $idArtistas[] = $id;
+        if(isset($_POST['check'])) {
+            $idArtistas = array();
+            var_dump($_POST['check']);
+            foreach ($_POST['check'] as $id) {
+                $idArtistas[] = $id;
+            }
+                $_SESSION['id_artistas'] = $idArtistas;
+                header('Location: managementObras.php'); 
+        } else {
+            $errores = '<li>No has seleccionado ningún artista</li>';
         }
-        $_SESSION['id_artistas'] = $idArtistas;
-        header('Location: managementObras.php');
     }
 }
 

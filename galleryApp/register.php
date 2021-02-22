@@ -8,9 +8,11 @@ require('Modelos/daoGaleria.php');
 require('Modelos/daoEncargado.php');
 
 $errores = '';
+var_dump($_POST);
 
 // recogemos y validamos todos los datos del formulario
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
     //////////////// datos de la galería //////////////////
     if (!empty($_POST['nombre_galeria'])) {
         $nombre_galeria = filter_var($_POST['nombre_galeria'], FILTER_SANITIZE_STRING);
@@ -25,8 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $errores .= '<li>Inserta la dirección de la galería</li>';
     }
-    if (!empty($_POST['provincia'])) {
-        $provincia = filter_var($_POST['provincia'], FILTER_SANITIZE_STRING);
+    if (!empty($_POST['resultadoProvincia'])) {
+        $provincia = filter_var($_POST['resultadoProvincia'], FILTER_SANITIZE_STRING);
         $provincia = trim(htmlspecialchars(stripslashes(strtolower($provincia))));
         $provincia = ucwords($provincia);
     } else {

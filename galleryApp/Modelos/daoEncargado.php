@@ -28,6 +28,7 @@ class DaoEncargado extends Conexion
             $encargado->__SET("nombre_usuario", $row["nombre_usuario"]);
             $encargado->__SET("password_usuario", $row["password_usuario"]);
             $encargado->__SET("email", $row["email"]);
+            $encargado->__SET("activo", $row["activo"]);
 
             $this->Encargados[] = $encargado;
         }
@@ -53,6 +54,8 @@ class DaoEncargado extends Conexion
             $encargado->__SET("nombre_usuario", $row["nombre_usuario"]);
             $encargado->__SET("password_usuario", $row["password_usuario"]);
             $encargado->__SET("email", $row["email"]);
+            $encargado->__SET("activo", $row["activo"]);
+
             return $encargado;
         } else {
             return false;
@@ -63,7 +66,7 @@ class DaoEncargado extends Conexion
 
     public function validarLogin($nombre_usuario, $password_usuario)
     {
-        $query = "SELECT id_encargado, encargado_id_galeria, nombre_encargado FROM encargado WHERE nombre_usuario = :nombre_usuario AND password_usuario = :password_usuario";
+        $query = "SELECT id_encargado, encargado_id_galeria, nombre_encargado, activo FROM encargado WHERE nombre_usuario = :nombre_usuario AND password_usuario = :password_usuario";
 
         $parameter = array(":nombre_usuario" => $nombre_usuario,
                             ":password_usuario" => $password_usuario );
@@ -78,6 +81,7 @@ class DaoEncargado extends Conexion
             $encargado->__SET("id_encargado", $row["id_encargado"]);
             $encargado->__SET("encargado_id_galeria", $row["encargado_id_galeria"]);
             $encargado->__SET("nombre_encargado", $row["nombre_encargado"]);
+            $encargado->__SET("activo", $row["activo"]);
             
             return $encargado;
         } else {

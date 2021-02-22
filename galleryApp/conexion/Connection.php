@@ -5,8 +5,8 @@ class Conexion {
 
 	private $connection;
 	private $dataBase;
-	private $host = "";
-	private $user = "";
+	private $host = "localhost";
+	private $user = "root";
 	private $password="";
 	public $returnData;          
 	

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/estilos.css">
     <title>Registro</title>
+    <script type="text/javascript" src="./js/scriptCargaProvinciaLocalidad.js"></script>
 </head>
 
 <body>
@@ -29,10 +30,18 @@
                 <i title="icono de dirección" alt="icono de dirección" class="icono izquierda fa fa-address-book-o"></i><input type="text" name="direccion" class="direccion" placeholder="Direccion">
             </div>
             <div class="form-group">
-                <i title="icono de marcador" alt="icono de marcador" class="icono izquierda fa fa-map-marker"></i><input type="text" name="provincia" class="provincia" placeholder="Provincia">
+                <i title="icono de marcador" alt="icono de marcador" class="icono izquierda fa fa-map-marker"></i><select style="height: 50px; font-size: 18px" id="provincia" name="provincia" class="provincia" placeholder="Selecciona Provincia">
+                    <option>
+
+                    </option>
+                </select>
             </div>
             <div class="form-group">
-                <i title="icono de marcador" alt="icono de marcador" class="icono izquierda fa fa-map-marker"></i><input type="text" name="localidad" class="localidad" placeholder="Localidad">
+                <i title="icono de marcador" alt="icono de marcador" class="icono izquierda fa fa-map-marker"></i><select style="height: 50px; font-size: 18px" id="municipio" name="localidad" class="localidad" placeholder="Selecciona Localidad">
+                    <option>
+
+                    </option>
+                </select>
             </div>
             <div class="form-group">
                 <i title="icono de teléfono" alt="icono de teléfono" class="icono izquierda fa fa-phone"></i><input type="numeric" name="telefono" class="telefono" placeholder="Teléfono">
@@ -57,6 +66,10 @@
                 <i title="icono de candado" alt="icono de candado" class="icono izquierda fa fa-lock"></i><input type="password" name="password2" class="password_btn" placeholder="Repetir Contraseña">
                 <i title="botón de enviar" alt="botón de enviar" class="submit-btn fa fa-arrow-right" onclick="login.submit()"></i>
             </div>
+            
+            <!-- este campo me sirve para obtener el resultado de texto del campo "provincia" que es un option que se vale de su value para cargar asíncronamente el JSON de los municipios -->
+
+            <input type="hidden" id="resultadoProvincia" name="resultadoProvincia">
 
             <?php if(!empty($errores)): ?>
                 <div class="errores">
@@ -68,6 +81,7 @@
         </form>
     </div>
     <br>
+
 </body>
 
 </html>
