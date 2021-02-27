@@ -1,5 +1,4 @@
 <?php session_start();
-var_dump($_SESSION);
 
 require('Modelos/daoArtista.php');
 require('Modelos/daoObra.php');
@@ -105,8 +104,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (empty($_POST['check'])) {
             $errores .= "<li>No se eliminó ningún elemento por no estar seleccionado</li>";
         } else {
+            
             foreach ($_POST['check'] as $id) {
-                $daoObra->eliminar($arrayId);
+
+                $daoObra->eliminar($id);
             }
             $daoObra->CloseConnection();
             $daoObra->__destruct();

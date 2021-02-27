@@ -29,6 +29,7 @@ class DaoGaleria extends Conexion
             $galeria->__SET("localidad", $row["localidad"]);
             $galeria->__SET("telefono", $row["telefono"]);
             $galeria->__SET("email", $row["email"]);
+            $galeria->__SET("g_map", $row["g_map"]);
 
             $this->Galerias[] = $galeria;
         }
@@ -94,6 +95,7 @@ class DaoGaleria extends Conexion
             $galeria->__SET("localidad", $row["localidad"]);
             $galeria->__SET("telefono", $row["telefono"]);
             $galeria->__SET("email", $row["email"]);
+            $galeria->__SET("g_map", $row["g_map"]);
             return $galeria;
         } else {
             return false;
@@ -102,24 +104,8 @@ class DaoGaleria extends Conexion
 
     public function insertar($galeria)
     {
-        $query = "INSERT INTO museo_galeria (nombre_galeria, direccion, provincia, localidad, telefono, email)
-        VALUES (:nombre_galeria, :direccion, :provincia, :localidad, :telefono, :email)";
-
-        $parameter = array(
-            ":nombre_galeria" => $galeria->__GET("nombre_galeria"),
-            ":direccion" => $galeria->__GET("direccion"),
-            ":provincia" => $galeria->__GET("provincia"),
-            ":localidad" => $galeria->__GET("localidad"),
-            ":telefono" => $galeria->__GET("telefono"),
-            ":email" => $galeria->__GET("email")
-        );
-        $this->Query($query, $parameter);
-    }
-
-    public function actualizar($galeria)
-    {
-        $query = "UPDATE museo_galeria SET nombre_galeria=:nombre_galeria, direccion=:direccion, provincia=:provincia,
-        localidad=:localidad, telefono=:telefono, email=:email WHERE id_galeria=:id_galeria";
+        $query = "INSERT INTO museo_galeria (nombre_galeria, direccion, provincia, localidad, telefono, email, g_map)
+        VALUES (:nombre_galeria, :direccion, :provincia, :localidad, :telefono, :email, :g_map)";
 
         $parameter = array(
             ":nombre_galeria" => $galeria->__GET("nombre_galeria"),
@@ -128,6 +114,24 @@ class DaoGaleria extends Conexion
             ":localidad" => $galeria->__GET("localidad"),
             ":telefono" => $galeria->__GET("telefono"),
             ":email" => $galeria->__GET("email"),
+            ":g_map" => $galeria->__GET("g_map")
+        );
+        $this->Query($query, $parameter);
+    }
+
+    public function actualizar($galeria)
+    {
+        $query = "UPDATE museo_galeria SET nombre_galeria=:nombre_galeria, direccion=:direccion, provincia=:provincia,
+        localidad=:localidad, telefono=:telefono, email=:email, g_map=:g_map WHERE id_galeria=:id_galeria";
+
+        $parameter = array(
+            ":nombre_galeria" => $galeria->__GET("nombre_galeria"),
+            ":direccion" => $galeria->__GET("direccion"),
+            ":provincia" => $galeria->__GET("provincia"),
+            ":localidad" => $galeria->__GET("localidad"),
+            ":telefono" => $galeria->__GET("telefono"),
+            ":email" => $galeria->__GET("email"),
+            ":g_map" => $galeria->__GET("g_map"),
             ":id_galeria" => $galeria->__GET("id_galeria")
         );
         $this->Query($query, $parameter);

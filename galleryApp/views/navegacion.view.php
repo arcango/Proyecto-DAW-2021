@@ -19,7 +19,6 @@
         <div class="botones_navegacion">
             <button class="boton-navegacion"><a href="index.php">Ir a la página principal</a></button>
             <button class="boton-navegacion"><a href="managementArtista.php">Administrar Artistas</a></button>
-            <button class="boton-navegacion"><a href="managementObras.php">Administrar Obras</a></button>
         </div>
         <hr class="border">
     </div>

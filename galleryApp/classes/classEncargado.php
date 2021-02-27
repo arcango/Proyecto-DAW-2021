@@ -7,6 +7,7 @@ class Encargado {
     private $nombre_usuario;
     private $password_usuario;
     private $email;
+    private $activo;
 
     public function __GET($propiedad) {
         return $this->$propiedad;

@@ -1,14 +1,13 @@
 <?php session_start();
 
-if (isset($_SESSION['encargado'])) {
-    header('Location: managementArtista.php');
-}
+// if (isset($_SESSION['encargado']) && ($_SESSION['encargado'] == "admin")) {
+//     header('Location: register.php');
+// }
 
 require('Modelos/daoGaleria.php');
 require('Modelos/daoEncargado.php');
 
 $errores = '';
-var_dump($_POST);
 
 // recogemos y validamos todos los datos del formulario
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -26,6 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $direccion = trim(strtolower(ucwords($direccion)));
     } else {
         $errores .= '<li>Inserta la dirección de la galería</li>';
+    }
+    if (!empty($_POST['g_map'])) {
+        $g_map = $_POST['g_map'];
+    } else {
+        $errores .= '<li>Inserta enlace de la galería</li>';
     }
     if (!empty($_POST['resultadoProvincia'])) {
         $provincia = filter_var($_POST['resultadoProvincia'], FILTER_SANITIZE_STRING);
@@ -95,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ///////// Aseguramos que no hay campos vacíos y que el password ha sido introducido correctamente ///////////////
     if (
         ($password == $password2) && 
-        (empty($nombre_galeria) || empty($direccion) || empty($provincia) ||
+        (empty($nombre_galeria) || empty($direccion) || empty($provincia) || empty($g_map) ||
         empty($localidad) || empty($telefono) || empty($email_galeria) || empty($nombre_encargado) ||
         empty($nombre_usuario) || empty($email) || empty($password) || empty($password2)
     )) {
@@ -116,6 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $galeria = new Galeria();
             $galeria->__SET("nombre_galeria", $nombre_galeria);
             $galeria->__SET("direccion", $direccion);
+            $galeria->__SET("g_map", $g_map);
             $galeria->__SET("provincia", $provincia);
             $galeria->__SET("localidad", $localidad);
             $galeria->__SET("telefono", $telefono);

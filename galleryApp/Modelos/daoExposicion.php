@@ -30,6 +30,7 @@ class DaoExposicion extends Conexion
             $exposicion->__SET("fecha_fin", $row["fecha_fin"]);
             $exposicion->__SET("cartel", $row["cartel"]);
             $exposicion->__SET("descripcion_cartel", $row["descripcion_cartel"]);
+            $exposicion->__SET("texto_exposicion", $row["texto_exposicion"]);
 
             $this->Exposiciones[] = $exposicion;
         }
@@ -56,6 +57,7 @@ class DaoExposicion extends Conexion
             $exposicion->__SET("fecha_fin", $row["fecha_fin"]);
             $exposicion->__SET("cartel", $row["cartel"]);
             $exposicion->__SET("descripcion_cartel", $row["descripcion_cartel"]);
+            $exposicion->__SET("texto_exposicion", $row["texto_exposicion"]);
         }
 
         return $exposicion;
@@ -73,7 +75,8 @@ class DaoExposicion extends Conexion
             ":fecha_inicio" => $exposicion->__GET("fecha_inicio"),
             ":fecha_fin" => $exposicion->__GET("fecha_fin"),
             ":cartel" => $exposicion->__GET("cartel"),
-            ":descripcion_cartel" =>$exposicion->__GET("descripcion_cartel")
+            ":descripcion_cartel" =>$exposicion->__GET("descripcion_cartel"),
+            ":texto_exposicion" =>$exposicion->__GET("texto_exposicion")
         );
         $this->Query($query, $parameter);
     }
@@ -81,7 +84,7 @@ class DaoExposicion extends Conexion
     public function actualizar($exposicion)
     {
         $query = "UPDATE exposicion SET galeria_id_galeria=:galeria_id_galeria, nombre_exposicion=:nombre_exposicion, nombre_usuario=:nombre_usuario,
-        fecha_inicio=:fecha_inicio, fecha_fin=:fecha_fin, cartel=:cartel, descripcion_cartel=:descripcion_cartel WHERE id_exposicion=:id_exposicion";
+        fecha_inicio=:fecha_inicio, fecha_fin=:fecha_fin, cartel=:cartel, descripcion_cartel=:descripcion_cartel, texto_exposicion=:texto_exposicion WHERE id_exposicion=:id_exposicion";
 
         $parameter = array(
             ":galeria_id_galeria" => $exposicion->__GET("galeria_id_galeria"),
@@ -91,6 +94,7 @@ class DaoExposicion extends Conexion
             ":fecha_fin" => $exposicion->__GET("fecha_fin"),
             ":cartel" => $exposicion->__GET("cartel"),
             ":descripcion_cartel" =>$exposicion->__GET("descripcion_cartel"),
+            ":texto_exposicion" =>$exposicion->__GET("texto_exposicion"),
             ":id_exposicion" => $exposicion->__GET("id_exposicion")
         );
         $this->Query($query, $parameter);

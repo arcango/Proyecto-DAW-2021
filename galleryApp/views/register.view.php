@@ -14,20 +14,27 @@
 
 <body>
     <div class="contenedor">
-        <h1 class="titulo">Registro</h1>
-        <p class="texto-registrate">
-            ¿Ya tienes cuenta?
-            <a href="login.php">Iniciar Sesión</a>
+        <p class="botones_navegacion">
+            <button class="boton-navegacion"><a href="cerrar.php">Cerrar Sesión</a></button>
         </p>
+        <h1 class="titulo">Registro</h1>
+        
+            <button class="boton-navegacion"><a href="admin.php">Gestionar Encargados</a></button>
+            <button class="boton-navegacion"><a href="index.php">Ir a la página principal</a></button>
         <br>
         <hr class="border">
+
         <!-- hmlspecialchars nos permite asegurarnos de que no nos van a inyectar cógigo -->
+        
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="formulario" name="login">
             <div class="form-group">
                 <i title="icono de institución" alt="icono de institución" class="icono izquierda fa fa-university"></i><input type="text" name="nombre_galeria" class="nombre_galeria" placeholder="Nombre del Museo o Galería">
             </div>
             <div class="form-group">
                 <i title="icono de dirección" alt="icono de dirección" class="icono izquierda fa fa-address-book-o"></i><input type="text" name="direccion" class="direccion" placeholder="Direccion">
+            </div>
+            <div class="form-group">
+                <i title="icono de dirección" alt="icono de dirección" class="icono izquierda fa fa-address-book-o"></i><input type="text" name="g_map" class="g_map" placeholder="Enlace de Google Maps">
             </div>
             <div class="form-group">
                 <i title="icono de marcador" alt="icono de marcador" class="icono izquierda fa fa-map-marker"></i><select style="height: 50px; font-size: 18px" id="provincia" name="provincia" class="provincia" placeholder="Selecciona Provincia">

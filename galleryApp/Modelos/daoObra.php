@@ -88,7 +88,7 @@ class DaoObra extends Conexion
         }
 
         $html = '';
-        $html .= '<h3>Pulsa sobre las imágenes para ampliar</h3>';
+        $html .= '<h3 style="text-align: center">Pulsa sobre las imágenes para ampliar</h3></br>';
         $html .= '<table class="tabla">';
         $html .= '<thead><tr><th >Selección</th><th>Id Obra</th><th>Nombre Obra</th><th>Id Artista</th><th>Nombre Artista</th><th>Descripción</th><th>Descripción Alternativa</th><th>Imagen</th><th>Inserta Imagen</th></thead>';
 

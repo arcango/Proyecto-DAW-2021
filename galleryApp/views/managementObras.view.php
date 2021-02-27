@@ -22,8 +22,14 @@
         <div class="botones_navegacion">
             <button class="boton-navegacion"><a href="index.php">Ir a la página principal</a></button>
             <button class="boton-navegacion"><a href="managementArtista.php">Administrar Artistas</a></button>
-            <button class="boton-navegacion"><a href="managementObras.php">Administrar Obras</a></button>
         </div>
+        <?php if (!empty($errores)) : ?>
+            <div class="errores">
+                <ul>
+                    <?php echo $errores; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
         <hr class="border">
         <div id="formularioObras">
             <h1 class="titulo">Actualización e Inserción de Obras</h1>
@@ -35,20 +41,12 @@
                 <input type="submit" name="insertar" value="Insertar" class="submit-btn">
                 <input type="submit" name="eliminar" value="Eliminar" class="submit-btn">
                 <hr class="border">
-                <?php if (!empty($errores)) : ?>
-                    <div class="errores">
-                        <ul>
-                            <?php echo $errores; ?>
-                        </ul>
-                    </div>
-                <?php endif; ?>
+                
             </form>
             <div id="modal">
 
             </div>
         </div>
     </div>
-
 </body>
-
 </html>

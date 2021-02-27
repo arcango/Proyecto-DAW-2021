@@ -35,9 +35,6 @@
             <?php endif; ?>
         </form>
 
-        <p class="texto-registrate">
-            ¿Aún no tienes cuenta?
-            <a href="register.php">Regístrate</a>
     </div>
 </body>
 

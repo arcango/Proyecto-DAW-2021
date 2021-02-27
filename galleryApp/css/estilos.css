@@ -67,6 +67,12 @@ a:hover {
     margin: auto;
 }
 
+.formularioEncargados .tabla {
+    max-width: 90%;
+    width: 90%;
+    margin: auto;
+}
+
 .formularioObras .tabla {
     max-width: 90%;
     width: 90%;
@@ -102,6 +108,15 @@ th {
 .formularioArtistas input[type="email"],
 .formularioArtistas input[type="checkbox"],
 .formularioArtistas input[type="numeric"] {
+    padding: 15px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    line-height: 13px;
+    border: none;
+    vertical-align: top;
+}
+
+.formularioEncargados input[type="text"] {
     padding: 15px;
     font-family: 'Raleway', sans-serif;
     font-size: 15px;
@@ -245,6 +260,25 @@ th {
 }
 
 .formularioObras .submit-btn {
+    padding: 17px;
+    text-align: center;
+    width: 33%;
+    max-height: 48px;
+    font-size: 18px;
+    line-height: 18px;
+    background: #679863;
+    display: inline-block;
+    color: #fff;
+    background: #769766;
+    cursor: pointer;
+    -webkit-border-radius: 0 3px 3px 0;
+    -moz-border-radius: 0 3px 3px 0;
+    -ms-border-radius: 0 3px 3px 0;
+    -o-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0;
+}
+
+.formularioEncargados .submit-btn {
     padding: 17px;
     text-align: center;
     width: 33%;
