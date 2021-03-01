@@ -8,7 +8,7 @@ try {
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
-
+print_r($_SESSION);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ///////// datos de inserción de artista //////////////////7
@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             $errores .= '<li>Inserta el nombre de el o la Artista</li>';
         }
+
         if (!empty($_POST['i_pagina_personal'])) {
             $i_pagina_personal = filter_var($_POST['i_pagina_personal'], FILTER_SANITIZE_URL);
             if (!filter_var($i_pagina_personal, FILTER_VALIDATE_URL)) {
@@ -28,6 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             $errores .= '<li>Inserta la dirección de la galería</li>';
         }
+
         if (!empty($_POST['i_email'])) {
             $i_email = filter_var($_POST['i_email'], FILTER_SANITIZE_EMAIL);
     
@@ -37,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             $errores .= '<li>Inserta el mail del usuario/a</li>';
         }
+
         if (!empty($_POST['i_telefono'])) {
             if (is_numeric($_POST['i_telefono']) && (strlen($_POST['i_telefono']) == 9)) {
                 $i_telefono = filter_var($_POST['i_telefono'], FILTER_SANITIZE_NUMBER_INT);
@@ -47,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             $errores .= '<li>Inserta el teléfono de la galería</li>';
         }
+
         if (!empty($_POST['i_descripcion'])) {
             $i_descripcion = filter_var($_POST['i_descripcion'], FILTER_SANITIZE_STRING);
             $i_descripcion = trim(htmlspecialchars(stripslashes($i_descripcion)));
@@ -97,19 +101,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if(isset($_POST['seleccionar'])) {
         if(isset($_POST['check'])) {
             $idArtistas = array();
-            var_dump($_POST['check']);
             foreach ($_POST['check'] as $id) {
                 $idArtistas[] = $id;
             }
-                $_SESSION['id_artistas'] = $idArtistas;
-                header('Location: managementObras.php'); 
+            $_SESSION['id_artista'] = $idArtistas;
+            header('Location: managementObras.php'); 
         } else {
             $errores = '<li>No has seleccionado ningún artista</li>';
         }
     }
 }
 
-if (isset($_SESSION['encargado'])) {
+if (isset($_SESSION['encargado']) && ($_SESSION['activo'] == 'si')) {
     require 'views/managementArtista.view.php';
 } else {
     header('Location: index.php');

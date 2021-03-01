@@ -144,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $daoEncargado->CloseConnection();
             $daoEncargado->__destruct();
             
-            header('Location: login.php');
+            header('Location: admin.php');
         }
     }
 }

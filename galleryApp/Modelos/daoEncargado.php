@@ -143,8 +143,8 @@ class DaoEncargado extends Conexion
 
     public function eliminar($id_encargado)
     {
-        $query = "DELETE FROM encargado WHERE id_encargado = :id_encargado";
+        $queryEncargado = "DELETE FROM encargado WHERE id_encargado = :id_encargado";
         $parameter = array(":id_encargado"=>$id_encargado);
-        $this->Query($query, $parameter);
+        $this->Query($queryEncargado, $parameter);
     }
 }

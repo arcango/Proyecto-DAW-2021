@@ -12,7 +12,6 @@ class DaoObra extends Conexion
     // Array de objetos Obra
     public $Obras = array();
     public $Artistas = array();
-    public $artistasObras = array();
 
     public function listar()
     {
@@ -38,7 +37,7 @@ class DaoObra extends Conexion
     }
 
     public function listarYPrintarObras($array) {
-        // Llamamos a la función listar()
+
         // vaciamos el array
         $this->Obras = array();
         $this->Artistas = array();
@@ -150,6 +149,28 @@ class DaoObra extends Conexion
         }
 
         return $obra;
+    }
+
+    public function obtenerNombreObra($array)
+    {
+        $this->Artistas = array();
+
+        foreach($array as $id) {
+
+            $query = "SELECT nombre FROM obra
+            WHERE id_obra = $id";
+            $this->Query($query, array());
+            foreach ($this->returnData as $row) {
+                $obra = new Obra();
+
+                $obra->__SET("nombre", $row["nombre"]);
+                
+                $this->Obras[] = $obra;
+            }
+        }
+        foreach ($this->Obras as $artista) {
+            echo($obra->nombre);
+        }
     }
 
     public function insertar($obra)

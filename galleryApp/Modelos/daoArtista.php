@@ -90,6 +90,28 @@ class DaoArtista extends Conexion
         return $artista;
     }
 
+    public function obtenerNombreArtistas($array)
+    {
+        $this->Artistas = array();
+
+        foreach($array as $id) {
+
+            $query = "SELECT nombre_artista FROM artista
+            WHERE id_artista = $id";
+            $this->Query($query, array());
+            foreach ($this->returnData as $row) {
+                $artista = new Artista();
+
+                $artista->__SET("nombre_artista", $row["nombre_artista"]);
+                
+                $this->Artistas[] = $artista;
+            }
+        }
+        foreach ($this->Artistas as $artista) {
+            echo($artista->nombre_artista);
+        }
+    }
+
     public function insertar($artista)
     {
         $query = "INSERT INTO artista (nombre_artista, pagina_personal, email, descripcion, telefono)

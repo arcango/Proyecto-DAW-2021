@@ -35,8 +35,9 @@
             <h1 class="titulo">Actualización e Inserción de Obras</h1>
             <!-- enctype="multipart/form-data" esto es necesario para subir archivos -->
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data" class="formularioObras">
-                <?php if (isset($_SESSION['id_artistas'])) $daoObra->listarYPrintarObras($_SESSION['id_artistas']); ?>
+                <?php if (isset($_SESSION['id_artista'])) $daoObra->listarYPrintarObras($_SESSION['id_artista']); ?>
                 <hr class="border">
+                <input type="submit" name="seleccionar" value="Seleccionar" class="submit-btn">
                 <input type="submit" name="actualizar" value="Actualizar" class="submit-btn">
                 <input type="submit" name="insertar" value="Insertar" class="submit-btn">
                 <input type="submit" name="eliminar" value="Eliminar" class="submit-btn">

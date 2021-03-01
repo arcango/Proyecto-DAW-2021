@@ -11,8 +11,8 @@ try {
     echo "Error: " . $e->getMessage();
 }
 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // var_dump($_POST);
     // exit;
     /////////// datos de inserción de la obra ////////////////
     if (isset($_POST['insertar'])) {
@@ -23,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             $errores .= '<li>Inserta el nombre de el o la Artista</li>';
         }
+
         if (!empty($_POST['i_id_artista'])) {
             if (is_numeric($_POST['i_id_artista']) && (strlen($_POST['i_id_artista']) > 0)) {
                 $i_id_artista = filter_var($_POST['i_id_artista'], FILTER_SANITIZE_NUMBER_INT);
@@ -33,18 +34,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             $errores .= '<li>Inserta el teléfono de la galería</li>';
         }
+
         if (!empty($_POST['i_descripcion'])) {
             $i_descripcion = filter_var($_POST['i_descripcion'], FILTER_SANITIZE_STRING);
             $i_descripcion = trim(htmlspecialchars($i_descripcion));
         } else {
             $errores .= '<li>Inserta el nombre de el o la Artista</li>';
         }
+
         if (!empty($_POST['i_descripcion_alt'])) {
             $i_descripcion_alt = filter_var($_POST['i_descripcion_alt'], FILTER_SANITIZE_STRING);
             $i_descripcion_alt = trim(htmlspecialchars($i_descripcion_alt));
         } else {
             $errores .= '<li>Inserta el nombre de el o la Artista</li>';
         }
+
         if(!empty($_FILES)) {
             // La arroba antes de la función getimagesize es para que no nos salte un posible error de tipo notice
             // en caso de no ser una imagen, la función nos devolverá false
@@ -56,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 move_uploaded_file($_FILES['i_imagen']['tmp_name'], $archivo_subido);
             }
         }
+
         if (empty($i_nombre) || empty($i_id_artista) || empty($i_descripcion) || 
         empty($i_descripcion_alt)) {
             $errores .= '<li>Por favor, rellena todos los datos correctamente</li>';
@@ -103,8 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['eliminar'])) {
         if (empty($_POST['check'])) {
             $errores .= "<li>No se eliminó ningún elemento por no estar seleccionado</li>";
-        } else {
-            
+        } else { 
             foreach ($_POST['check'] as $id) {
 
                 $daoObra->eliminar($id);
@@ -114,12 +118,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header('Location: managementObras.php');
         }
     }
+
+    if(isset($_POST['seleccionar'])) {
+        if (count($_SESSION['id_artista']) <= 1) {
+            if(isset($_POST['check'])) {
+                $idObra = array();
+                foreach ($_POST['check'] as $id) {
+                    $idObra[] = $id;
+                }
+                    $_SESSION['id_obra'] = $idObra;
+                    header('Location: managementExposicion.php'); 
+            } else {
+                $errores = '<li>No has seleccionado ninguna obra</li>';
+            }
+        } else {
+            $errores = '<li>No puedes seleccionar más de un artista para formar una exposición</li>';
+        }
+    }
+    
     
 }
 
-if (isset($_SESSION['encargado'])) {
+if (isset($_SESSION['encargado']) && ($_SESSION['activo'] == 'si')) {
     require 'views/managementObras.view.php';
 } else {
     header('Location: index.php');
 }
-?>
