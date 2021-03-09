@@ -30,12 +30,15 @@
                 </ul>
             </div>
         <?php endif; ?>
-        <?php $daoExposicion->listarYPrintarExposicionDeGaleria($_SESSION['id_galeria']); ?>
         <div id="formularioExposiciones">
             <h1 class="titulo">Actualización e Inserción de Esposiciones</h1>
             <hr class="border">
-            <h2>Vas a realizar una exposición sobre <?php $daoArtista->obtenerNombreArtistas($_SESSION['id_artista']); ?> con la obra <?php $daoObra->obtenerNombreObra($_SESSION['id_obra']); ?></h2></br>
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data" class="formularioExposiciones">
+            <?php $daoExposicion->listarYPrintarExposicionDeGaleria($_SESSION['id_galeria']); ?>
+            <hr class="border">
+            <h2>Vas a crear una exposición sobre <?php $daoArtista->obtenerNombreArtistas($_SESSION['id_artista']); ?> con la obra <?php $daoObra->obtenerNombreObra($_SESSION['id_obra']); ?></h2></br>
+            <hr class="border">
+
             <hr class="border">
             <input type="submit" name="crear" value="Crear" class="submit-btn">
             <input type="submit" name="actualizar" value="Actualizar" class="submit-btn">

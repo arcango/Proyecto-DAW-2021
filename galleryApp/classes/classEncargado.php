@@ -2,6 +2,7 @@
 
 class Encargado {
 
+    private $id_encargado;
     private $encargado_id_galeria;
     private $nombre_encargado;
     private $nombre_usuario;

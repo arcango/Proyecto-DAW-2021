@@ -1,331 +1,406 @@
-* {
-    margin: 0;
-    padding: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-body {
-    font-size: 16px;
-    font-family: 'Raleway', sans-serif;
-    background: #e9e2cc;
-    color: #000;
-}
-
-a {
-    text-decoration: none;
-    color: #8a4f07;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.contenedor {
-    max-width: 500px;
-    width: 90%;
-    margin: auto;
-}
-
-.contenedor-management {
-    max-width: 95%;
-    width: 95%;
-    margin: auto;
-}
-
-.titulo {
-    font-weight: 300;
-    color: #8a4f07;
-    text-align: center;
-    margin: 20px 0 20px 0;
-}
-
-.border {
-    border: none;
-    margin-bottom: 5px;
-    margin-top: 5px;
-    border-top: 10px solid #8a4f07;
-    background: none;
-    color: none;
-}
-
-.formulario {
-    background: #f5f0df;
-    padding: 30px;
-    margin-bottom: 30px;
-}
-
-.formulario .form-group {
-    width: 80%;
-    margin-bottom: 10px;
-}
-
-.formularioArtistas .tabla {
-    max-width: 90%;
-    width: 90%;
-    margin: auto;
-}
-
-.formularioEncargados .tabla {
-    max-width: 90%;
-    width: 90%;
-    margin: auto;
-}
-
-.formularioObras .tabla {
-    max-width: 90%;
-    width: 90%;
-    margin: auto;
-}
-
-td {
-    text-align: center;
-}
-
-th {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #f5f0df;
-}
-
-.separador {
-    background-color: #998138;
-}
-
-.formulario input[type="text"],
-.formulario input[type="email"],
-.formulario input[type="password"],
-.formulario input[type="numeric"] {
-    padding: 15px;
-    font-family: 'Raleway', sans-serif;
-    font-size: 18px;
-    line-height: 16px;
-    border: none;
-    vertical-align: top;
-}
-
-.formularioArtistas input[type="text"],
-.formularioArtistas input[type="email"],
-.formularioArtistas input[type="checkbox"],
-.formularioArtistas input[type="numeric"] {
-    padding: 15px;
-    font-family: 'Raleway', sans-serif;
-    font-size: 15px;
-    line-height: 13px;
-    border: none;
-    vertical-align: top;
-}
-
-.formularioEncargados input[type="text"] {
-    padding: 15px;
-    font-family: 'Raleway', sans-serif;
-    font-size: 15px;
-    line-height: 13px;
-    border: none;
-    vertical-align: top;
-}
-
-.formularioObras input[type="text"],
-.formularioObras input[type="email"],
-.formularioObras input[type="checkbox"],
-.formularioObras textarea {
-    padding: 5px;
-    font-family: 'Raleway', sans-serif;
-    font-size: 13px;
-    line-height: 13px;
-    border: none;
-    vertical-align: top;
-    min-height: 70px;
-}
-
-.formularioObras input[type="file"] {
-    padding: 15px;
-    font-family: 'Raleway', sans-serif;
-    font-size: 13px;
-    line-height: 13px;
-    border: none;
-    vertical-align: top;
-    max-width: 270px;
-    min-height: 70px;
-}
-
-.botones_navegacion {
-    text-align: center;
-}
-
-.boton-navegacion {
-    background-color: #f5f0df;
-    ;
-    /* Green */
-    border: none;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-
-.boton-navegacion:hover {
-    background-color: #d8b851;
-}
-
-.formulario .icono {
-    padding: 17px;
-    text-align: center;
-    width: 48px;
-    max-height: 48px;
-    font-size: 18px;
-    line-height: 18px;
-    background: #c8c8c8;
-    display: inline-block;
-    color: #6b6b6b;
-    vertical-align: top;
-}
-
-.formulario .icono.izquierda {
-    margin-right: 4px;
-    -webkit-border-radius: 3px 0 0 3px;
-    -moz-border-radius: 3px 0 0 3px;
-    -ms-border-radius: 3px 0 0 3px;
-    -o-border-radius: 3px 0 0 3px;
-    border-radius: 3px 0 0 3px;
-}
-
-.formulario .usuario,
-.formulario .password,
-.formulario .correo,
-.formulario .nombre_usuario,
-.formulario .nombre_galeria,
-.formulario .direccion,
-.formulario .provincia,
-.formulario .localidad,
-.formulario .telefono,
-.formulario .correo_galeria {
-    width: calc(100% - 52px);
-    -webkit-border-radius: 0 3px 3px 0;
-    -moz-border-radius: 0 3px 3px 0;
-    -ms-border-radius: 0 3px 3px 0;
-    -o-border-radius: 0 3px 3px 0;
-    border-radius: 0 3px 3px 0;
-}
-
-.formulario .password_btn {
-    width: calc(100% - 105px);
-}
-
-.formulario .error ul {
-    padding: 0 15px;
-}
-
-.formulario .error ul li {
-    margin-bottom: 10px;
-}
-
-.formulario .submit-btn {
-    padding: 17px;
-    text-align: center;
-    width: 48px;
-    max-height: 48px;
-    font-size: 18px;
-    line-height: 18px;
-    background: #679863;
-    display: inline-block;
-    color: #fff;
-    background: #769766;
-    cursor: pointer;
-    -webkit-border-radius: 0 3px 3px 0;
-    -moz-border-radius: 0 3px 3px 0;
-    -ms-border-radius: 0 3px 3px 0;
-    -o-border-radius: 0 3px 3px 0;
-    border-radius: 0 3px 3px 0;
-}
-
-.formularioArtistas .submit-btn {
-    padding: 17px;
-    text-align: center;
-    width: 33%;
-    max-height: 48px;
-    font-size: 18px;
-    line-height: 18px;
-    background: #679863;
-    display: inline-block;
-    color: #fff;
-    background: #769766;
-    cursor: pointer;
-    -webkit-border-radius: 0 3px 3px 0;
-    -moz-border-radius: 0 3px 3px 0;
-    -ms-border-radius: 0 3px 3px 0;
-    -o-border-radius: 0 3px 3px 0;
-    border-radius: 0 3px 3px 0;
-}
-
-.formularioObras .submit-btn {
-    padding: 17px;
-    text-align: center;
-    width: 49%;
-    max-height: 48px;
-    font-size: 18px;
-    line-height: 18px;
-    background: #679863;
-    display: inline-block;
-    color: #fff;
-    background: #769766;
-    cursor: pointer;
-    -webkit-border-radius: 0 3px 3px 0;
-    -moz-border-radius: 0 3px 3px 0;
-    -ms-border-radius: 0 3px 3px 0;
-    -o-border-radius: 0 3px 3px 0;
-    border-radius: 0 3px 3px 0;
-}
-
-.formularioEncargados .submit-btn {
-    padding: 17px;
-    text-align: center;
-    width: 33%;
-    max-height: 48px;
-    font-size: 18px;
-    line-height: 18px;
-    background: #679863;
-    display: inline-block;
-    color: #fff;
-    background: #769766;
-    cursor: pointer;
-    -webkit-border-radius: 0 3px 3px 0;
-    -moz-border-radius: 0 3px 3px 0;
-    -ms-border-radius: 0 3px 3px 0;
-    -o-border-radius: 0 3px 3px 0;
-    border-radius: 0 3px 3px 0;
-}
-
-.texto-registrate {
-    text-align: center;
-}
-
-.texto-cerrar {
-    text-align: center;
-}
-
-.texto-registrate a {
-    display: block;
-    font-size: 18px;
-}
-
-.texto-cerrar a {
-    display: block;
-    font-size: 18px;
-}
-
-.contenido article {
-    padding: 30px;
-    background: #fff;
-}
-
-.contenido article p {
-    margin-bottom: 10px;
-    color: #000;
-}
-
-.errores {
-    color: red;
-    margin-left: 15px;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-size: 16px;
+            font-family: 'Raleway', sans-serif;
+            background: #e9e2cc;
+            color: #000;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #8a4f07;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .contenedor,
+        .contenedor-formulario-encargados {
+            max-width: 500px;
+            width: 90%;
+            margin: auto;
+        }
+        
+        .contenedor-management {
+            max-width: 95%;
+            width: 95%;
+            margin: auto;
+        }
+        
+        .titulo {
+            font-weight: 300;
+            color: #8a4f07;
+            text-align: center;
+            margin: 20px 0 20px 0;
+        }
+        
+        .border {
+            border: none;
+            margin-bottom: 5px;
+            margin-top: 5px;
+            border-top: 10px solid #8a4f07;
+            background: none;
+            color: none;
+        }
+        
+        .formulario {
+            background: #f5f0df;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .formularioEncargados {
+            background: #f5f0df;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .formulario .form-group {
+            width: 80%;
+            margin-bottom: 10px;
+        }
+        
+        .formularioEncargados .form-group {
+            width: 80%;
+            margin-bottom: 10px;
+        }
+        
+        .formularioArtistas .tabla {
+            max-width: 95%;
+            width: 95%;
+            margin: auto;
+        }
+        
+        .formularioEncargados .tabla {
+            max-width: 95%;
+            width: 95%;
+            margin: auto;
+        }
+        
+        .formularioObras .tabla {
+            max-width: 95%;
+            width: 95%;
+            margin: auto;
+        }
+        
+        .formularioExposiciones .tabla {
+            max-width: 95%;
+            width: 95%;
+            margin: auto;
+        }
+        
+        td {
+            text-align: center;
+            max-width: 20px;
+        }
+        
+        th {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f5f0df;
+            max-width: 20px;
+        }
+        
+        .separador {
+            background-color: #998138;
+        }
+        
+        .formulario input[type="text"],
+        .formulario input[type="email"],
+        .formulario input[type="password"],
+        .formulario input[type="numeric"] {
+            padding: 15px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 18px;
+            line-height: 16px;
+            border: none;
+            vertical-align: top;
+        }
+        
+        .formularioArtistas input[type="text"],
+        .formularioArtistas input[type="email"],
+        .formularioArtistas input[type="checkbox"],
+        .formularioArtistas input[type="numeric"] {
+            padding: 15px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 15px;
+            line-height: 13px;
+            border: none;
+            vertical-align: top;
+        }
+        
+        .formularioEncargados input[type="text"],
+        .formularioEncargados input[type="email"],
+        .formularioEncargados input[type="password"],
+        .formularioEncargados input[type="numeric"] {
+            padding: 15px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 15px;
+            line-height: 13px;
+            border: none;
+            vertical-align: top;
+        }
+        
+        .formularioObras input[type="text"],
+        .formularioObras input[type="email"],
+        .formularioObras input[type="checkbox"],
+        .formularioObras textarea {
+            padding: 5px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 13px;
+            line-height: 13px;
+            border: none;
+            vertical-align: top;
+            min-height: 70px;
+        }
+        
+        .formularioObras input[type="file"] {
+            padding: 15px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 13px;
+            line-height: 13px;
+            border: none;
+            vertical-align: top;
+            max-width: 270px;
+            min-height: 70px;
+            size: 10px;
+        }
+        
+        .formularioExposiciones input[type="file"] {
+            padding: 15px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 13px;
+            line-height: 13px;
+            border: none;
+            vertical-align: top;
+            max-width: 270px;
+            min-height: 70px;
+            size: 10px;
+        }
+        
+        .botones_navegacion {
+            text-align: center;
+        }
+        
+        .boton-navegacion {
+            background-color: #f5f0df;
+            ;
+            /* Green */
+            border: none;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+        
+        .boton-navegacion:hover {
+            background-color: #d8b851;
+        }
+        
+        .formulario .icono,
+        .formularioEncargados .icono {
+            padding: 17px;
+            text-align: center;
+            width: 48px;
+            max-height: 48px;
+            font-size: 18px;
+            line-height: 18px;
+            background: #c8c8c8;
+            display: inline-block;
+            color: #6b6b6b;
+            vertical-align: top;
+        }
+        
+        .formulario .icono.izquierda,
+        .formularioEncargados .icono.izquierda {
+            margin-right: 4px;
+            -webkit-border-radius: 3px 0 0 3px;
+            -moz-border-radius: 3px 0 0 3px;
+            -ms-border-radius: 3px 0 0 3px;
+            -o-border-radius: 3px 0 0 3px;
+            border-radius: 3px 0 0 3px;
+        }
+        
+        .formulario .usuario,
+        .formulario .password,
+        .formulario .correo,
+        .formulario .nombre_usuario,
+        .formulario .nombre_galeria,
+        .formulario .direccion,
+        .formulario .provincia,
+        .formulario .localidad,
+        .formulario .telefono,
+        .formulario .correo_galeria {
+            width: calc(100% - 52px);
+            -webkit-border-radius: 0 3px 3px 0;
+            -moz-border-radius: 0 3px 3px 0;
+            -ms-border-radius: 0 3px 3px 0;
+            -o-border-radius: 0 3px 3px 0;
+            border-radius: 0 3px 3px 0;
+        }
+        
+        .formularioEncargados .usuario,
+        .formularioEncargados .password,
+        .formularioEncargados .correo,
+        .formularioEncargados .nombre_usuario,
+        .formularioEncargados .nombre_galeria,
+        .formularioEncargados .direccion,
+        .formularioEncargados .provincia,
+        .formularioEncargados .localidad,
+        .formularioEncargados .telefono,
+        .formularioEncargados .correo_galeria {
+            width: calc(100% - 52px);
+            -webkit-border-radius: 0 3px 3px 0;
+            -moz-border-radius: 0 3px 3px 0;
+            -ms-border-radius: 0 3px 3px 0;
+            -o-border-radius: 0 3px 3px 0;
+            border-radius: 0 3px 3px 0;
+        }
+        
+        .formulario .password_btn {
+            width: calc(100% - 105px);
+        }
+        
+        .formulario .error ul {
+            padding: 0 15px;
+        }
+        
+        .formulario .error ul li {
+            margin-bottom: 10px;
+        }
+        
+        .formulario .submit-btn {
+            padding: 17px;
+            text-align: center;
+            width: 48px;
+            max-height: 48px;
+            font-size: 18px;
+            line-height: 18px;
+            background: #679863;
+            display: inline-block;
+            color: #fff;
+            background: #769766;
+            cursor: pointer;
+            -webkit-border-radius: 0 3px 3px 0;
+            -moz-border-radius: 0 3px 3px 0;
+            -ms-border-radius: 0 3px 3px 0;
+            -o-border-radius: 0 3px 3px 0;
+            border-radius: 0 3px 3px 0;
+        }
+        
+        .formularioArtistas .submit-btn {
+            padding: 17px;
+            text-align: center;
+            width: 33%;
+            max-height: 48px;
+            font-size: 18px;
+            line-height: 18px;
+            background: #679863;
+            display: inline-block;
+            color: #fff;
+            background: #769766;
+            cursor: pointer;
+            -webkit-border-radius: 0 3px 3px 0;
+            -moz-border-radius: 0 3px 3px 0;
+            -ms-border-radius: 0 3px 3px 0;
+            -o-border-radius: 0 3px 3px 0;
+            border-radius: 0 3px 3px 0;
+        }
+        
+        .formularioObras .submit-btn {
+            padding: 17px;
+            text-align: center;
+            width: 49%;
+            max-height: 48px;
+            font-size: 18px;
+            line-height: 18px;
+            background: #679863;
+            display: inline-block;
+            color: #fff;
+            background: #769766;
+            cursor: pointer;
+            -webkit-border-radius: 0 3px 3px 0;
+            -moz-border-radius: 0 3px 3px 0;
+            -ms-border-radius: 0 3px 3px 0;
+            -o-border-radius: 0 3px 3px 0;
+            border-radius: 0 3px 3px 0;
+        }
+        
+        .formularioEncargados .submit-btn {
+            padding: 17px;
+            text-align: center;
+            width: 33%;
+            max-height: 48px;
+            font-size: 18px;
+            line-height: 18px;
+            background: #679863;
+            display: inline-block;
+            color: #fff;
+            background: #769766;
+            cursor: pointer;
+            -webkit-border-radius: 0 3px 3px 0;
+            -moz-border-radius: 0 3px 3px 0;
+            -ms-border-radius: 0 3px 3px 0;
+            -o-border-radius: 0 3px 3px 0;
+            border-radius: 0 3px 3px 0;
+        }
+        
+        .formularioExposiciones .submit-btn {
+            padding: 17px;
+            text-align: center;
+            width: 33%;
+            max-height: 48px;
+            font-size: 18px;
+            line-height: 18px;
+            background: #679863;
+            display: inline-block;
+            color: #fff;
+            background: #769766;
+            cursor: pointer;
+            -webkit-border-radius: 0 3px 3px 0;
+            -moz-border-radius: 0 3px 3px 0;
+            -ms-border-radius: 0 3px 3px 0;
+            -o-border-radius: 0 3px 3px 0;
+            border-radius: 0 3px 3px 0;
+        }
+        
+        .texto-registrate {
+            text-align: center;
+        }
+        
+        .texto-cerrar {
+            text-align: center;
+        }
+        
+        .texto-registrate a {
+            display: block;
+            font-size: 18px;
+        }
+        
+        .texto-cerrar a {
+            display: block;
+            font-size: 18px;
+        }
+        
+        .contenido article {
+            padding: 30px;
+            background: #fff;
+        }
+        
+        .contenido article p {
+            margin-bottom: 10px;
+            color: #000;
+        }
+        
+        .errores {
+            color: red;
+            margin-left: 15px;
+        }

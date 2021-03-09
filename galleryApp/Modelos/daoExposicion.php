@@ -126,12 +126,29 @@ class DaoExposicion extends Conexion
                 $this->Obras[] = $obra;
             }
 
+            $html = '';
+            foreach($this->Exposiciones as $exposicion) {
+            $html .= '<table class="tabla">';
+            $html .= '<thead><tr><th >Selección</th><th>Id Exposición</th><th>Nombre Exposición</th><th>Fecha de Inicio</th><th>Fecha de Finalización</th><th>Cartel</th><th>Cambiar Cartel</th><th>Descripción del Cartel</th></tr></thead>';
+                $id_expo = $exposicion->id_exposicion;
+                $html .= "<tr><td><input type='checkbox' name='check[]' value='$id_expo' class='form-control'></td>";
+                $html .= "<th>$id_expo</th>";
+                $html .= "<td><input type='text' name='nombre_exposicion$id_expo' value='$exposicion->nombre_exposicion' class='form-control'></td>";
+                $html .= "<td><input type='date' name='fecha_inicio$id_expo' value='$exposicion->fecha_inicio' class='form-control'></td>";
+                $html .= "<td><input type='date' name='fecha_fin$id_expo' value='$exposicion->fecha_fin' class='form-control'></td>";
+                $html .= "<th><a class='thickbox' href='carteles/$exposicion->cartel'><img style='max-width: 20%' src='carteles/$exposicion->cartel' href='$exposicion->descripcion_cartel'/></a></th>";
+                $html .= "<td><input type='file' name='cartel$id_expo' value='$exposicion->cartel' class='form-control'></td>";
+                $html .= "<td><input type='text' name='descripcion_cartel$id_expo' value='$exposicion->descripcion_cartel' class='form-control'></td></tr>";
+                $html .= "<tr><th colspan='8'>Texto de la exposición</th></tr>";
+                $html .= "<tr><td colspan='8'><textarea name='texto_exposicion$id_expo' value='$exposicion->texto_exposicion' rows='20' cols='100' class='form-control'></textarea></td></tr>";
+                $html .= "</table>";
+            }
 
-            print_r($this->Obras);
-            echo '<br>';
-            print_r($this->Artistas);
-            echo '<br>';
-            print_r($this->Exposiciones);
+            echo $html;
+
+
+
+            
         }
 
     }

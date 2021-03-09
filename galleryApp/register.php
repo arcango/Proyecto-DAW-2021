@@ -12,6 +12,8 @@ $errores = '';
 // recogemos y validamos todos los datos del formulario
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+
+
     //////////////// datos de la galería //////////////////
     if (!empty($_POST['nombre_galeria'])) {
         $nombre_galeria = filter_var($_POST['nombre_galeria'], FILTER_SANITIZE_STRING);
@@ -92,13 +94,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($password == $password2) {
         ///// Encriptamos la contraseña ///////
         $password = hash('sha512', $password);
+        $password2 = hash('sha512', $password2);
     } else {
         $errores .= '<li>Las contraseñas no coinciden</li>';
     }
 
     ///////// Aseguramos que no hay campos vacíos y que el password ha sido introducido correctamente ///////////////
     if (
-        ($password == $password2) && 
+        ($password != $password2) ||
         (empty($nombre_galeria) || empty($direccion) || empty($provincia) || empty($g_map) ||
         empty($localidad) || empty($telefono) || empty($email_galeria) || empty($nombre_encargado) ||
         empty($nombre_usuario) || empty($email) || empty($password) || empty($password2)
@@ -143,6 +146,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $daoEncargado->insertar($encargado);
             $daoEncargado->CloseConnection();
             $daoEncargado->__destruct();
+
+            // $to = "$email";
+            // $subject = 'Wellcome to GalleryApp';
+            // $message = "Wellcome $nombre_encargado, this is your password: $password";
+            // $headers = "From: gallery_app@gmail.com\r\n";
+            // if (mail($to, $subject, $message, $headers)) {
+            //    echo "SUCCESS";
+            // } else {
+            //    echo "ERROR";
+            // }
             
             header('Location: admin.php');
         }

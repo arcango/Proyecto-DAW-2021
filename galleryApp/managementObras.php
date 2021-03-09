@@ -126,8 +126,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 foreach ($_POST['check'] as $id) {
                     $idObra[] = $id;
                 }
+                if(count($idObra) > 1){
+                    $errores = '<li>No puedes seleccionar más de una obra para formar una exposición</li>';
+                } else {
                     $_SESSION['id_obra'] = $idObra;
                     header('Location: managementExposicion.php'); 
+                }
             } else {
                 $errores = '<li>No has seleccionado ninguna obra</li>';
             }

@@ -13,7 +13,7 @@ try {
     echo "Error: " . $e->getMessage();
 }
 
-print_r($_SESSION);
+// print_r($_SESSION);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (isset($_POST['crear'])) {
@@ -108,6 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (isset($_POST['eliminar'])) {
+        print_r($_POST['check']);
         if (empty($_POST['check'])) {
             $errores .= "<li>No se eliminó ningún elemento por no estar seleccionado</li>";
         } else {

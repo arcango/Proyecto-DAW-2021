@@ -112,23 +112,8 @@ class DaoEncargado extends Conexion
 
     public function insertar($encargado)
     {
-        $query = "INSERT INTO encargado (encargado_id_galeria, nombre_encargado, nombre_usuario, password_usuario, email)
-        VALUES (:encargado_id_galeria, :nombre_encargado, :nombre_usuario, :password_usuario, :email)";
-
-        $parameter = array(
-            ":encargado_id_galeria" => $encargado->__GET("encargado_id_galeria"),
-            ":nombre_encargado" => $encargado->__GET("nombre_encargado"),
-            ":nombre_usuario" => $encargado->__GET("nombre_usuario"),
-            ":password_usuario" => $encargado->__GET("password_usuario"),
-            ":email" => $encargado->__GET("email")
-        );
-        $this->Query($query, $parameter);
-    }
-
-    public function actualizar($encargado)
-    {
-        $query = "UPDATE encargado SET encargado_id_galeria=:encargado_id_galeria, nombre_encargado=:nombre_encargado, nombre_usuario=:nombre_usuario,
-        password_usuario=:password_usuario, email=:email WHERE id_encargado=:id_encargado";
+        $query = "INSERT INTO encargado (encargado_id_galeria, nombre_encargado, nombre_usuario, password_usuario, email, activo)
+        VALUES (:encargado_id_galeria, :nombre_encargado, :nombre_usuario, :password_usuario, :email, :activo)";
 
         $parameter = array(
             ":encargado_id_galeria" => $encargado->__GET("encargado_id_galeria"),
@@ -136,6 +121,32 @@ class DaoEncargado extends Conexion
             ":nombre_usuario" => $encargado->__GET("nombre_usuario"),
             ":password_usuario" => $encargado->__GET("password_usuario"),
             ":email" => $encargado->__GET("email"),
+            ":activo" => $encargado->__GET("activo")
+        );
+        $this->Query($query, $parameter);
+    }
+
+    public function actualizar($encargado)
+    {
+        $query = "UPDATE encargado SET nombre_encargado=:nombre_encargado, nombre_usuario=:nombre_usuario,
+        password_usuario=:password_usuario, email=:email WHERE id_encargado=:id_encargado";
+
+        $parameter = array(
+            ":nombre_encargado" => $encargado->__GET("nombre_encargado"),
+            ":nombre_usuario" => $encargado->__GET("nombre_usuario"),
+            ":password_usuario" => $encargado->__GET("password_usuario"),
+            ":email" => $encargado->__GET("email"),
+            ":id_encargado" => $encargado->__GET("id_encargado")
+        );
+        $this->Query($query, $parameter);
+    }
+
+    public function actualizarActivo($encargado)
+    {
+        $query = "UPDATE encargado SET activo=:activo WHERE id_encargado=:id_encargado";
+        
+        $parameter = array(
+            ":activo" => $encargado->__GET("activo"),
             ":id_encargado" => $encargado->__GET("id_encargado")
         );
         $this->Query($query, $parameter);
