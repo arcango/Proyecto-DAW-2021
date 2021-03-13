@@ -127,21 +127,26 @@ class DaoExposicion extends Conexion
             }
 
             $html = '';
+            $numero_exposicion = 1;
             foreach($this->Exposiciones as $exposicion) {
             $html .= '<table class="tabla">';
-            $html .= '<thead><tr><th >Selección</th><th>Id Exposición</th><th>Nombre Exposición</th><th>Fecha de Inicio</th><th>Fecha de Finalización</th><th>Cartel</th><th>Cambiar Cartel</th><th>Descripción del Cartel</th></tr></thead>';
+            $html .= "<thead><tr><th colspan='8' class='diferenciador'>Exposición $numero_exposicion</th></tr></thead>";
+            $html .= '<tr><th >Selección</th><th>Id Exposición</th><th>Nombre Exposición</th><th>Fecha de Inicio</th><th>Fecha de Finalización</th>';
                 $id_expo = $exposicion->id_exposicion;
                 $html .= "<tr><td><input type='checkbox' name='check[]' value='$id_expo' class='form-control'></td>";
                 $html .= "<th>$id_expo</th>";
                 $html .= "<td><input type='text' name='nombre_exposicion$id_expo' value='$exposicion->nombre_exposicion' class='form-control'></td>";
                 $html .= "<td><input type='date' name='fecha_inicio$id_expo' value='$exposicion->fecha_inicio' class='form-control'></td>";
-                $html .= "<td><input type='date' name='fecha_fin$id_expo' value='$exposicion->fecha_fin' class='form-control'></td>";
-                $html .= "<th><a class='thickbox' href='carteles/$exposicion->cartel'><img style='max-width: 20%' src='carteles/$exposicion->cartel' href='$exposicion->descripcion_cartel'/></a></th>";
+                $html .= "<td><input type='date' name='fecha_fin$id_expo' value='$exposicion->fecha_fin' class='form-control'></td></tr>";
+                $html .= "<tr><th>Cartel</th><th>Cambiar Cartel</th><th>Descripción del Cartel</th></tr>";
+                $html .= "<tr><th><a class='thickbox' href='carteles/$exposicion->cartel'><img style='max-width: 20%' src='carteles/$exposicion->cartel' href='$exposicion->descripcion_cartel'/></a></th>";
                 $html .= "<td><input type='file' name='cartel$id_expo' value='$exposicion->cartel' class='form-control'></td>";
                 $html .= "<td><input type='text' name='descripcion_cartel$id_expo' value='$exposicion->descripcion_cartel' class='form-control'></td></tr>";
                 $html .= "<tr><th colspan='8'>Texto de la exposición</th></tr>";
-                $html .= "<tr><td colspan='8'><textarea name='texto_exposicion$id_expo' value='$exposicion->texto_exposicion' rows='20' cols='100' class='form-control'></textarea></td></tr>";
+                $html .= "<tr><td colspan='8'><textarea name='texto_exposicion$id_expo' value='$exposicion->texto_exposicion' rows='20' cols='130' class='form-control'>$exposicion->texto_exposicion</textarea></td></tr>";
                 $html .= "</table>";
+                $html .= "<input type='hidden' name='cartelOculto$id_expo' value='$exposicion->cartel'>";
+                $numero_exposicion++;
             }
 
             echo $html;
@@ -155,8 +160,8 @@ class DaoExposicion extends Conexion
 
     public function insertar($exposicion)
     {
-        $query = "INSERT INTO exposicion (galeria_id_galeria, galeria_id_artista, nombre_exposicion, fecha_inicio, fecha_fin, cartel, descripcion_cartel)
-        VALUES (:galeria_id_galeria, :galeria_id_artista, :nombre_exposicion, :fecha_inicio, :fecha_fin, :cartel, :descripcion_cartel)";
+        $query = "INSERT INTO exposicion (galeria_id_galeria, galeria_id_artista, nombre_exposicion, fecha_inicio, fecha_fin, cartel, descripcion_cartel, texto_exposicion)
+        VALUES (:galeria_id_galeria, :galeria_id_artista, :nombre_exposicion, :fecha_inicio, :fecha_fin, :cartel, :descripcion_cartel, :texto_exposicion)";
 
         $parameter = array(
             ":galeria_id_galeria" => $exposicion->__GET("galeria_id_galeria"),
@@ -173,7 +178,7 @@ class DaoExposicion extends Conexion
 
     public function actualizar($exposicion)
     {
-        $query = "UPDATE exposicion SET galeria_id_galeria=:galeria_id_galeria, nombre_exposicion=:nombre_exposicion, nombre_usuario=:nombre_usuario,
+        $query = "UPDATE exposicion SET galeria_id_galeria=:galeria_id_galeria, galeria_id_artista=:galeria_id_artista, nombre_exposicion=:nombre_exposicion,
         fecha_inicio=:fecha_inicio, fecha_fin=:fecha_fin, cartel=:cartel, descripcion_cartel=:descripcion_cartel, texto_exposicion=:texto_exposicion WHERE id_exposicion=:id_exposicion";
 
         $parameter = array(

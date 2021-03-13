@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } else {
                 session_destroy();
                 $_SESSION = array();
-                header('Location: login.php');
+                header('Location: index.php');
             }
         } else {
             $errores .= '<li>Datos incorrectos o usuario no existe</li>';

@@ -13,6 +13,7 @@ try {
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // var_dump($_POST);
     // exit;
     /////////// datos de inserción de la obra ////////////////
     if (isset($_POST['insertar'])) {

@@ -8,7 +8,6 @@ try {
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
-print_r($_SESSION);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ///////// datos de inserción de artista //////////////////7

@@ -23,22 +23,30 @@
             <button class="boton-navegacion"><a href="index.php">Ir a la página principal</a></button>
             <button class="boton-navegacion"><a href="managementArtista.php">Administrar Artistas</a></button>
         </div>
-        <?php if (!empty($errores)) : ?>
-            <div class="errores">
-                <ul>
-                    <?php echo $errores; ?>
-                </ul>
-            </div>
-        <?php endif; ?>
         <div id="formularioExposiciones">
-            <h1 class="titulo">Actualización e Inserción de Esposiciones</h1>
+            <h1 class="titulo">Actualización e Inserción de Exposiciones</h1>
+            <?php if (!empty($errores)) : ?>
+                <div class="errores">
+                    <ul>
+                        <?php echo $errores; ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
             <hr class="border">
+            <h1 class="titulo">Exposiciones Actuales</h1>
+            <h2 class="titulo">Formulario de Actualización</h2>
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data" class="formularioExposiciones">
             <?php $daoExposicion->listarYPrintarExposicionDeGaleria($_SESSION['id_galeria']); ?>
             <hr class="border">
-            <h2>Vas a crear una exposición sobre <?php $daoArtista->obtenerNombreArtistas($_SESSION['id_artista']); ?> con la obra <?php $daoObra->obtenerNombreObra($_SESSION['id_obra']); ?></h2></br>
+            <h1 class="titulo">Formulario de creación de Exposición</h1>
+            <h2 class="titulo">Vas a crear una exposición sobre <?php $daoArtista->obtenerNombreArtistas($_SESSION['id_artista']); ?> con la obra <?php $daoObra->obtenerNombreObra($_SESSION['id_obra']); ?></h2>
             <hr class="border">
-
+            <table class="tabla">
+                <tr><th>Nombre Exposicíon</th><th>Fecha de Inicio</th><th>Fecha de Finalización</th><th>Cartel</th><th>Descripción del Cartel</th></tr>
+                <tr><td><input type="text" name="i_nombre_exposicion"></td><td><input type="date" name="i_fecha_inicio"></td><td><input type="date" name="i_fecha_fin"></td><td><input type="file" name="i_cartel"></td><td><input type="text" name="i_descripcion_cartel"</td></tr>
+                <tr><th colspan="5">Texto de la Exposición</th></tr>
+                <tr><td colspan="5"><textarea name="i_texto_exposicion" rows="20" cols="130"></textarea></td></tr>
+            </table>
             <hr class="border">
             <input type="submit" name="crear" value="Crear" class="submit-btn">
             <input type="submit" name="actualizar" value="Actualizar" class="submit-btn">

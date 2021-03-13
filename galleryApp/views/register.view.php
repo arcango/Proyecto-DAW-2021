@@ -37,14 +37,14 @@
                 <i title="icono de dirección" alt="icono de dirección" class="icono izquierda fa fa-address-book-o"></i><input type="text" name="g_map" class="g_map" placeholder="Enlace de Google Maps">
             </div>
             <div class="form-group">
-                <i title="icono de marcador" alt="icono de marcador" class="icono izquierda fa fa-map-marker"></i><select style="height: 50px; font-size: 18px" id="provincia" name="provincia" class="provincia" placeholder="Selecciona Provincia">
+                <i title="icono de marcador" alt="icono de marcador" class="icono izquierda fa fa-map-marker"></i><select style="height: 38px; font-size: 14px" id="provincia" name="provincia" class="provincia" placeholder="Selecciona Provincia">
                     <option>
 
                     </option>
                 </select>
             </div>
             <div class="form-group">
-                <i title="icono de marcador" alt="icono de marcador" class="icono izquierda fa fa-map-marker"></i><select style="height: 50px; font-size: 18px" id="municipio" name="localidad" class="localidad" placeholder="Selecciona Localidad">
+                <i title="icono de marcador" alt="icono de marcador" class="icono izquierda fa fa-map-marker"></i><select style="height: 38px; font-size: 14px" id="municipio" name="localidad" class="localidad" placeholder="Selecciona Localidad">
                     <option>
 
                     </option>

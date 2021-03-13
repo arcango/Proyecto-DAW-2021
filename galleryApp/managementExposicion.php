@@ -13,10 +13,12 @@ try {
     echo "Error: " . $e->getMessage();
 }
 
-// print_r($_SESSION);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (isset($_POST['crear'])) {
+        // print_r($_SESSION);
+        // var_dump($_POST);
+        // exit;
         // $daoExposicion->listarYPrintarExposicionDeGaleria($_SESSION['id_galeria']);
         if(isset($_POST['i_nombre_exposicion'])) {
             $i_nombre_exposicion = filter_var($_POST['i_nombre_exposicion'], FILTER_SANITIZE_STRING);
@@ -57,14 +59,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 move_uploaded_file($_FILES['i_cartel']['tmp_name'], $archivo_subido);
             }
         }
-
         if (empty($i_nombre_exposicion) || empty($i_fecha_inicio) || empty($i_fecha_fin) ||
         empty($i_descripcion_cartel) || empty($i_texto_exposicion)) {
             $errores .= '<li>Por favor, rellena todos los datos correctamente</li>';
         } else {
             $exposicion = new Exposicion();
             $exposicion->__SET("galeria_id_galeria", $_SESSION['id_galeria']);
-            $exposicion->__SET("galeria_id_artista", $_SESSION['id_artista']);
+            $exposicion->__SET("galeria_id_artista", $_SESSION['id_artista'][0]);
             $exposicion->__SET("nombre_exposicion", $i_nombre_exposicion);
             $exposicion->__SET("fecha_inicio", $i_fecha_inicio);
             $exposicion->__SET("fecha_fin", $i_fecha_fin);
@@ -86,8 +87,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             foreach ($_POST['check'] as $id_exposicion) {
 
                 $exposicion = new Exposicion();
-                $exposicion->__SET("galeria_id_galeria", $id_exposicion);
-                $exposicion->__SET("galeria_id_artista", $_POST["id_artista$id_exposicion"]);
+                $exposicion->__SET("id_exposicion", $id_exposicion);
+                $exposicion->__SET("galeria_id_galeria", $_SESSION['id_galeria']);
+                $exposicion->__SET("galeria_id_artista", $_SESSION['id_artista'][0]);
                 $exposicion->__SET("nombre_exposicion", $_POST["nombre_exposicion$id_exposicion"]);
                 $exposicion->__SET("fecha_inicio", $_POST["fecha_inicio$id_exposicion"]);
                 $exposicion->__SET("fecha_fin", $_POST["fecha_fin$id_exposicion"]);
@@ -96,9 +98,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if (!empty($_FILES["cartel$id_exposicion"]["name"])) {
                     $exposicion->__SET("cartel", $_FILES["cartel$id_exposicion"]["name"]);
                 } else {
-                    $exposicion->__SET("cartel", $_POST["cartel$id_exposicion"]);
+                    $exposicion->__SET("cartel", $_POST["cartelOculto$id_exposicion"]);
                 }
-
+                // print_r($exposicion);
+                // exit;
                 $daoExposicion->actualizar($exposicion);
             }
             $daoExposicion->CloseConnection();

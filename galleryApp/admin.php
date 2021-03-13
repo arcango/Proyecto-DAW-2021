@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $encargado->__SET("email", $email);
                     $encargado->__SET("password_usuario", $password);
 
-                    $daoEncargado->insertar($encargado);
+                    $daoEncargado->actualizar($encargado);
                     $daoEncargado->CloseConnection();
                     $daoEncargado->__destruct();
                 }
@@ -79,28 +79,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['actualizarActividad'])) {
         if (isset($_POST['check'])) {
             foreach ($_POST['check'] as $id_encargado) {
-
-                $encargado = new Encargado();
-                $encargado->__SET("id_encargado", $id_encargado);
-                $encargado->__SET("activo", $_POST["activo$id_encargado"]);
-
-                $daoEncargado->actualizarActivo($encargado);
-            }
-            $daoEncargado->CloseConnection();
-            $daoEncargado->__destruct();
-            header('Location: admin.php');
-        } else {
-            $errores .= "<li>No se actualizó ningún elemento por no estar seleccionado</li>";
-        }
-    }
-
-    if (isset($_POST['actualizarActividad'])) {
-        if (isset($_POST['check'])) {
-            foreach ($_POST['check'] as $id_encargado) {
                 $activo = $_POST["activo$id_encargado"];
-                if (isset($activo) && (($activo === "si") || $activo === "no")) {
-                    echo($activo);
-                    exit;
+                if (($activo == "si") || ($activo == "no")) {
                     $activo = filter_var($activo, FILTER_SANITIZE_STRING);
 
                     $encargado = new Encargado();
@@ -108,30 +88,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $encargado->__SET("activo", $activo);
 
                     $daoEncargado->actualizarActivo($encargado);
+                    $daoEncargado->CloseConnection();
+                    $daoEncargado->__destruct();
+                    header('Location: admin.php');
                 } else {
-                    $errores .= '<li>Los valores de la actividad tienen que ser "si" o "no"</li>';
+                    $errores .= "<li>Los valores de la actividad tienen que ser 'si' o 'no' </li>";
                 }
             }
-            $daoEncargado->CloseConnection();
-            $daoEncargado->__destruct();
-            header('Location: admin.php');
         } else {
             $errores .= "<li>No se actualizó ningún elemento por no estar seleccionado</li>";
         }
     }
 
-    if (isset($_POST['eliminarEncargado'])) {
-        if (isset($_POST['check'])) {
-            foreach ($_POST['check'] as $id) {
-                $daoEncargado->eliminar($id);
-            }
-            $daoEncargado->CloseConnection();
-            $daoEncargado->__destruct();
-            header('Location: admin.php');
-        } else {
-            $errores .= "<li>No se eliminó ningún elemento por no estar seleccionado</li>";
-        }
-    }
+    // En caso de necesitar en un futuro esta acción, sólo haría falta descomentarla y descomentar 
+    // su botón en admin.view.php
+
+    // if (isset($_POST['eliminarEncargado'])) {
+    //     if (isset($_POST['check'])) {
+    //         foreach ($_POST['check'] as $id) {
+    //             $daoEncargado->eliminar($id);
+    //         }
+    //         $daoEncargado->CloseConnection();
+    //         $daoEncargado->__destruct();
+    //         header('Location: admin.php');
+    //     } else {
+    //         $errores .= "<li>No se eliminó ningún elemento por no estar seleccionado</li>";
+    //     }
+    // }
 }
 
 if (isset($_SESSION['encargado'])) {

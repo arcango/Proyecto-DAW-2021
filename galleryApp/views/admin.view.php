@@ -63,7 +63,7 @@
                 <hr class="border">
                 <input type="submit" name="actualizarEncargado" value="Actualizar Encargado" class="submit-btn">
                 <input type="submit" name="actualizarActividad" value="Actualizar Actividad" class="submit-btn">
-                <input type="submit" name="eliminarEncargado" value="Eliminar Encargado" class="submit-btn">
+                <!-- <input type="submit" name="eliminarEncargado" value="Eliminar Encargado" class="submit-btn"> -->
                 <hr class="border">
 
             </form>

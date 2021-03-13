@@ -112,16 +112,15 @@ class DaoEncargado extends Conexion
 
     public function insertar($encargado)
     {
-        $query = "INSERT INTO encargado (encargado_id_galeria, nombre_encargado, nombre_usuario, password_usuario, email, activo)
-        VALUES (:encargado_id_galeria, :nombre_encargado, :nombre_usuario, :password_usuario, :email, :activo)";
+        $query = "INSERT INTO encargado (encargado_id_galeria, nombre_encargado, nombre_usuario, password_usuario, email)
+        VALUES (:encargado_id_galeria, :nombre_encargado, :nombre_usuario, :password_usuario, :email)";
 
         $parameter = array(
             ":encargado_id_galeria" => $encargado->__GET("encargado_id_galeria"),
             ":nombre_encargado" => $encargado->__GET("nombre_encargado"),
             ":nombre_usuario" => $encargado->__GET("nombre_usuario"),
             ":password_usuario" => $encargado->__GET("password_usuario"),
-            ":email" => $encargado->__GET("email"),
-            ":activo" => $encargado->__GET("activo")
+            ":email" => $encargado->__GET("email")
         );
         $this->Query($query, $parameter);
     }
