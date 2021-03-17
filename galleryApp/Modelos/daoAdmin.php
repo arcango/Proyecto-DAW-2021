@@ -43,7 +43,7 @@ class DaoAdmin extends Conexion
 
         $html = '';
         $html .= '<table class="tabla">';
-        $html .= '<thead><tr><th>Selección</th><th>Id Encargado</th><th>Nombre Encargado</th><th>Nombre Galería</th><th>Activo</th></tr></thead>';
+        $html .= '<thead class="t-head"><tr><th>Selección</th><th>Id Encargado</th><th>Nombre Encargado</th><th>Nombre Galería</th><th>Activo</th></tr></thead>';
         
         foreach ($this->returnData as $row) {
             $encargado = new Encargado();
@@ -54,7 +54,7 @@ class DaoAdmin extends Conexion
             $encargado->__SET("activo", $row["activo"]);
             $galeria->__SET("nombre_galeria", $row["nombre_galeria"]);
  
-            $html .= "<tr><td><input type='checkbox' name='check[]' value='$encargado->id_encargado' class='form-control'></td>";
+            $html .= "<tr><td class='td-check'><input type='checkbox' name='check[]' value='$encargado->id_encargado' class='form-control'></td>";
             $html .= "<th>$encargado->id_encargado</th><th>$encargado->nombre_encargado</th><th>$galeria->nombre_galeria</th><td><input type='text' name='activo$encargado->id_encargado' placeholder='$encargado->activo' class='form-control'></td></tr>";
             
         }

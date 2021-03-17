@@ -41,11 +41,11 @@ class DaoArtista extends Conexion
         // Mostramos el resultado en pantalla
         $html = '';
         $html .= '<table class="tabla">';
-        $html .= '<thead><tr><th >Selección</th><th>Id Artista</th><th>Nombre</th><th>Página Personal</th><th>Email</th><th>Teléfono</th><th>Descripción</th></tr></thead>';
+        $html .= '<thead class="t-head"><tr><th >Selección</th><th>Id Artista</th><th>Nombre</th><th>Página Personal</th><th>Email</th><th>Teléfono</th><th>Descripción</th></tr></thead>';
 
         foreach ($this->Artistas as $artista) {
             $id = $artista->id_artista;
-            $html .= "<tr><td><input type='checkbox' name='check[]' value='$id' class='form-control'></td>";
+            $html .= "<tr><td class='td-check'><input type='checkbox' name='check[]' value='$id' class='form-control'></td>";
             $html .= "<th>$id</th>";
             $html .= "<td><input type='text' name='nombre$id' value='$artista->nombre_artista' class='form-control'></td>";
             $html .= "<td><input type='text' name='pagina_personal$id' value='$artista->pagina_personal' class='form-control'></td>";

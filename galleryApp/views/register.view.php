@@ -8,8 +8,8 @@
     <!-- Usamos font-awesome para los iconos -->
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/estilos.css">
-    <title>Registro</title>
     <script type="text/javascript" src="./js/scriptCargaProvinciaLocalidad.js"></script>
+    <title>Registro</title>
 </head>
 
 <body>
@@ -18,14 +18,15 @@
             <button class="boton-navegacion"><a href="cerrar.php">Cerrar Sesión</a></button>
         </p>
         <h1 class="titulo">Registro</h1>
-        
+        <p class="botones_navegacion">
             <button class="boton-navegacion"><a href="admin.php">Gestionar Encargados</a></button>
             <button class="boton-navegacion"><a href="index.php">Ir a la página principal</a></button>
+        </p>
         <br>
         <hr class="border">
 
         <!-- hmlspecialchars nos permite asegurarnos de que no nos van a inyectar cógigo -->
-        
+
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="formulario" name="login">
             <div class="form-group">
                 <i title="icono de institución" alt="icono de institución" class="icono izquierda fa fa-university"></i><input type="text" name="nombre_galeria" class="nombre_galeria" placeholder="Nombre del Museo o Galería">
@@ -73,15 +74,15 @@
                 <i title="icono de candado" alt="icono de candado" class="icono izquierda fa fa-lock"></i><input type="password" name="password2" class="password_btn" placeholder="Repetir Contraseña">
                 <i title="botón de enviar" alt="botón de enviar" class="submit-btn fa fa-arrow-right" onclick="login.submit()"></i>
             </div>
-            
+
             <!-- este campo me sirve para obtener el resultado de texto del campo "provincia" que es un option que se vale de su value para cargar asíncronamente el JSON de los municipios -->
 
             <input type="hidden" id="resultadoProvincia" name="resultadoProvincia">
 
-            <?php if(!empty($errores)): ?>
+            <?php if (!empty($errores)) : ?>
                 <div class="errores">
                     <ul>
-                        <?php echo $errores;?>
+                        <?php echo $errores; ?>
                     </ul>
                 </div>
             <?php endif; ?>

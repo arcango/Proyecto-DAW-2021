@@ -89,11 +89,11 @@ class DaoObra extends Conexion
         $html = '';
         $html .= '<h3 style="text-align: center">Pulsa sobre las imágenes para ampliar</h3></br>';
         $html .= '<table class="tabla">';
-        $html .= '<thead><tr><th >Selección</th><th>Id Obra</th><th>Nombre Obra</th><th>Id Artista</th><th>Nombre Artista</th><th>Descripción</th><th>Descripción Alternativa</th><th>Imagen</th><th>Inserta Imagen</th></tr></thead>';
+        $html .= '<thead class="t-head"><tr><th >Selección</th><th>Id Obra</th><th>Nombre Obra</th><th>Id Artista</th><th>Nombre Artista</th><th>Descripción</th><th>Descripción Alternativa</th><th>Imagen</th><th>Inserta Imagen</th></tr></thead>';
 
         foreach($this->Obras as $obra) {
             $id_obra = $obra->id_obra;
-            $html .= "<tr><td><input type='checkbox' name='check[]' value='$id_obra' class='form-control'></td>";
+            $html .= "<tr><td class='td-check'><input type='checkbox' name='check[]' value='$id_obra' class='form-control'></td>";
             $html .= "<th>$id_obra</th>";
             $html .= "<td><input type='text' name='nombre_obra$id_obra' value='$obra->nombre' class='form-control'></td>";
             
@@ -114,7 +114,7 @@ class DaoObra extends Conexion
             }
         }
 
-        $html .= "<tr><th>Nueva Obra: </th>";
+        $html .= "<tr class='t-head'><th>Nueva Obra: </th>";
         $html .= "<th></th>";
         $html .= "<td><input type='text' name='i_nombre' class='form-control'></td>";
         $html .= "<td><input type='text' name='i_id_artista' class='form-control'></td>";

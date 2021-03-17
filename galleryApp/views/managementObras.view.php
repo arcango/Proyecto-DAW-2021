@@ -10,7 +10,7 @@
     <script type="text/javascript" src="http://ipwg.site90.net/thickbox_compressed.js"></script>
     <link rel="stylesheet" href="http://ipwg.site90.net/thickbox.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="css/estilos.css">
-    <title>Insertar Obras</title>
+    <title>Administración de Obras</title>
 </head>
 
 <body>

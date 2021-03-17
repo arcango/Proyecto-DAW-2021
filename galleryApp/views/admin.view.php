@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="http://ipwg.site90.net/thickbox.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/estilos.css">
-    <title>Document</title>
+    <title>Administración de Encargados</title>
 </head>
 
 <body>
@@ -39,7 +39,9 @@
         <h2 class="titulo">Se pueden actualizar varios a la vez</h2>
         <div id="formularioEncargados">
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="formularioEncargados">
-                <?php $daoAdmin->listarEncargados(); ?>
+                <div class="contenedor-tabla">
+                    <?php $daoAdmin->listarEncargados(); ?>
+                </div>
                 <hr class="border">
                 <h1 class="titulo">Formulario de Actualización de Encargados</h1>
                 <h2 class="titulo">Sólo se podrá actualizar uno a la vez</h2>
