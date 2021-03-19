@@ -25,6 +25,7 @@ class DaoUsuario extends Conexion
             $usuario->__SET("id_usuario", $row["id_usuario"]);
             $usuario->__SET("nombre_usuario", $row["nombre_usuario"]);
             $usuario->__SET("email_usuario", $row["email_usuario"]);
+            $usuario->__SET("mensaje_usuario", $row["mensaje_usuario"]);
 
             $this->Usuarios[] = $usuario;
         }
@@ -46,6 +47,7 @@ class DaoUsuario extends Conexion
             $usuario->__SET("id_usuario", $row["id_usuario"]);
             $usuario->__SET("nombre_usuario", $row["nombre_usuario"]);
             $usuario->__SET("email_usuario", $row["email_usuario"]);
+            $usuario->__SET("mensaje_usuario", $row["mensaje_usuario"]);
         }
 
         return $usuario;
@@ -53,25 +55,27 @@ class DaoUsuario extends Conexion
 
     public function insertar($usuario)
     {
-        $query = "INSERT INTO usuario (nombre_usuario, email_usuario)
-        VALUES (:nombre_usuario, :email_usuario)";
+        $query = "INSERT INTO usuario (nombre_usuario, email_usuario, mensaje_usuario)
+        VALUES (:nombre_usuario, :email_usuario, :mensaje_usuario)";
 
         $parameter = array(
             ":nombre_usuario" => $usuario->__GET("nombre_usuario"),
-            ":nombre" => $usuario->__GET("email_usuario")
+            ":email_usuario" => $usuario->__GET("email_usuario"),
+            ":mensaje_usuario" => $usuario->__GET("mensaje_usuario")
         );
         $this->Query($query, $parameter);
     }
 
     public function actualizar($usuario)
     {
-        $query = "UPDATE usuario SET nombre_usuario=:nombre_usuario, email_usuario=:email_usuario
+        $query = "UPDATE usuario SET nombre_usuario=:nombre_usuario, email_usuario=:email_usuario, mensaje_usuario=:mensaje_usuario
         WHERE id_usuario=:id_usuario";
 
         $parameter = array(
             "id_usuario" => $usuario->__GET("id_usuario"),
             ":nombre_usuario" => $usuario->__GET("nombre_usuario"),
-            ":email_usuario" => $usuario->__GET("email_usuario")
+            ":email_usuario" => $usuario->__GET("email_usuario"),
+            ":mensaje_usuario" => $usuario->__GET("mensaje_usuario")
         );
         $this->Query($query, $parameter);
     }

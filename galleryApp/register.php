@@ -1,8 +1,5 @@
 <?php session_start();
 
-// if (isset($_SESSION['encargado']) && ($_SESSION['encargado'] == "admin")) {
-//     header('Location: register.php');
-// }
 
 require('Modelos/daoGaleria.php');
 require('Modelos/daoEncargado.php');

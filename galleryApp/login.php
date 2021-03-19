@@ -1,5 +1,4 @@
 <?php session_start();
-
 if ((isset($_SESSION['encargado'])) && ($_SESSION['encargado'] == 'admin')) {
     header('Location: admin.php');
 }

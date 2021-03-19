@@ -1,31 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, 
-        initial-scale=1.0 maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Open+Sans&family=Oswald&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/estilos.css">
-    <title>GalleryApp</title>
-</head>
-
+<?php require 'header.php'; ?>
 <body>
-    <header>
-        <div class="contenedor">
-            <div class="logo izquierda">
-                <p class="titulo-gallery"><a href="./index.php"><img src="./logoGalleryApp/logoGalleryApp.png" class="logo-gallery">GalleryApp</a></p>
-            </div>
+    <div class="header">
+        <div class="logo izquierda">
+            <p class="titulo-gallery"><a href="./index.php"><img src="./logoGalleryApp/logoGalleryApp.png" class="logo-gallery">GalleryApp</a></p>
         </div>
-    </header>
-    <div class="derecha">
-        <form name="busqueda" class="buscar" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+    </div>
+    <p class="pregunta">¿Dónde estás?</p>
+    <?php if (!empty($errores)) : ?>
+        <div class="errores">
+            <ul>
+                <?php echo $errores; ?>
+            </ul>
+        </div>
+    <?php endif; ?>
+    <div id="imagen">
+        <div class="formbuscador">
+            <form name="busqueda" class="formularioBusqueda" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
 
-            <input type="text" name="busqueda" placeholder="Buscar">
-            <button type="submit" class="icono fa fa-search"></button>
-        </form>
+                <div class="buscador buscadorP">
+                    <select style="height: 38px; font-size: 14px" id="provincia" name="provincia" class="provincia">
+                        <option>
+
+                        </option>
+                    </select>
+
+                    <button type="submit" class="icono fa fa-search"></button>
+
+                </div>
+
+                <input type="hidden" id="resultadoProvincia" name="resultadoProvincia">
+                <input type="hidden" id="resultadoLocalidad" name="resultadoLocalidad">
+            </form>
+        </div>
+    </div>
+    <?php if ((isset($_SESSION['provincia'])) && ($_SESSION['provincia']) != '- Provincia -') $daoBusqueda->listarYPrintarExposicionesBlog($_SESSION['provincia']) ?>
+    
+    <div class="artistas">
+        
+        <h1>Artistas</h1>
+    
+        <?php $daoBusqueda->listarYPrintarArtistasRandom(); ?>
+    </div>
+    </div>
+    <div class="pie">
+        <h2><a href="contacto.php">Contacta con nosotros</a></h2>
     </div>
 </body>
 

@@ -1,5 +1,6 @@
 var peticion = null;
 
+
 function inicializa_xhr() {
     if (window.XMLHttpRequest) {
         return new XMLHttpRequest();
@@ -55,6 +56,7 @@ function muestraMunicipios() {
             }
         }
         resultadoProvincia();
+        resultadoLocalidad();
     }
 }
 
@@ -63,6 +65,13 @@ function resultadoProvincia() {
     var provinciaSeleccionada = select.options[select.selectedIndex].text;
     document.getElementById("resultadoProvincia").value = provinciaSeleccionada;
     console.log(provinciaSeleccionada);
+}
+
+function resultadoLocalidad() {
+    var select = document.getElementById("municipio");
+    var municipioSeleccionado = select.options[select.selectedIndex].text;
+    document.getElementById("resultadoLocalidad").value = municipioSeleccionado;
+    console.log(municipioSeleccionado);
 }
 
 window.onload = function() {
@@ -74,4 +83,5 @@ window.onload = function() {
     }
 
     document.getElementById("provincia").onchange = cargaMunicipios;
+    document.getElementById("municipio").onchange = resultadoLocalidad;
 }

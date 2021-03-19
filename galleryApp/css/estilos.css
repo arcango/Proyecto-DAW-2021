@@ -26,8 +26,6 @@ a:hover {
     text-decoration: underline;
 }
 
-.boton-navegacion {}
-
 .contenedor,
 .contenedor-formulario-encargados {
     max-width: 500px;
@@ -58,14 +56,16 @@ a:hover {
 }
 
 .formulario,
-.formularioEncargados {
+.formularioEncargados,
+.formularioUsuario {
     background: #f5f0df;
     padding: 30px;
     margin-bottom: 30px;
 }
 
 .formulario .form-group,
-.formularioEncargados .form-group {
+.formularioEncargados .form-group,
+.formularioUsuario .form-group {
     width: 80%;
     margin-bottom: 10px;
 }
@@ -125,6 +125,10 @@ th {
 .formulario input[type="email"],
 .formulario input[type="password"],
 .formulario input[type="numeric"],
+.formularioUsuario input[type="text"],
+.formularioUsuario input[type="email"],
+.formularioUsuario input[type="password"],
+.formularioUsuario input[type="numeric"],
 .formularioArtistas input[type="text"],
 .formularioArtistas input[type="email"],
 .formularioArtistas input[type="checkbox"],
@@ -145,6 +149,12 @@ th {
     line-height: 16px;
     border: none;
     vertical-align: top;
+}
+
+.formularioEncargados input[type="select"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 .formularioObras input[type="file"],
@@ -181,7 +191,8 @@ th {
 }
 
 .formulario .icono,
-.formularioEncargados .icono {
+.formularioEncargados .icono,
+.formularioUsuario .icono {
     padding: 13px;
     text-align: center;
     width: 30px;
@@ -195,7 +206,8 @@ th {
 }
 
 .formulario .icono.izquierda,
-.formularioEncargados .icono.izquierda {
+.formularioEncargados .icono.izquierda,
+.formularioUsuario .icono.izquierda {
     margin-right: 4px;
     -webkit-border-radius: 3px 0 0 3px;
     -moz-border-radius: 3px 0 0 3px;
@@ -215,6 +227,9 @@ th {
 .formulario .g_map,
 .formulario .telefono,
 .formulario .correo_galeria,
+.formulario .usuario,
+.formularioUsuario .correo,
+.formularioUsuario .nombre_usuario,
 .formularioEncargados .usuario,
 .formularioEncargados .password,
 .formularioEncargados .correo,
@@ -224,13 +239,22 @@ th {
 .formularioEncargados .provincia,
 .formularioEncargados .localidad,
 .formularioEncargados .telefono,
-.formularioEncargados .correo_galeria {
+.formularioEncargados .correo_galeria,
+.formularioUsuario .nombre_usuario {
     width: calc(100% - 40px);
     -webkit-border-radius: 0 3px 3px 0;
     -moz-border-radius: 0 3px 3px 0;
     -ms-border-radius: 0 3px 3px 0;
     -o-border-radius: 0 3px 3px 0;
     border-radius: 0 3px 3px 0;
+}
+
+textarea.textarea-usuario {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
 }
 
 .formulario .password_btn {
@@ -250,7 +274,7 @@ th {
     padding: 17px;
     text-align: center;
     width: 48px;
-    max-height: 38px;
+    max-height: 50px;
     /* min-width: 150px; */
     line-height: 0px;
     background: #679863;
@@ -266,6 +290,7 @@ th {
 }
 
 .formularioArtistas .submit-btn,
+.formularioUsuario .submit-btn,
 .formularioExposiciones .submit-btn {
     padding: 17px;
     text-align: center;
@@ -284,6 +309,12 @@ th {
     -ms-border-radius: 0 3px 3px 0;
     -o-border-radius: 0 3px 3px 0;
     border-radius: 0 3px 3px 0;
+}
+
+.formularioArtistas .submit-btn:hover,
+.formularioUsuario .submit-btn:hover,
+.formularioExposiciones .submit-btn:hover {
+    border: 1px solid #777;
 }
 
 .formularioEncargados .submit-btn,
@@ -305,6 +336,19 @@ th {
     -ms-border-radius: 0 3px 3px 0;
     -o-border-radius: 0 3px 3px 0;
     border-radius: 0 3px 3px 0;
+}
+
+.buscador select {
+    min-width: 150px;
+}
+
+.formularioBusqueda .provincia {
+    position: relative;
+    font-family: 'Raleway', sans-serif;
+}
+
+.provincia select {
+    display: none;
 }
 
 .texto-registrate,
@@ -330,7 +374,8 @@ th {
 
 .errores {
     color: red;
-    margin-left: 15px;
+    background-color: #f5f0df;
+    padding-left: 30px;
 }
 
 .contenedor {
@@ -348,78 +393,462 @@ th {
     float: right;
 }
 
-header {
-    color: #fff;
-    margin-bottom: 30px;
-    background: #f5f0df;
-}
-
-header .contenedor {
-    overflow: hidden;
-}
-
-header .buscar {
-    display: inline-block;
+.header {
     position: relative;
-    margin-right: 15px;
-}
-
-header .buscar input[type="text"] {
-    background: none;
-    border: 1px solid #8a4f07;
-    color: #8a4f07;
-    height: 30px;
-    padding: 0 10px;
-    padding-right: 32px;
-}
-
-header .buscar input[type="text"]:hover,
-header .buscar input[type="text"]:focus {
-    color: #8a4f07;
-    border: 1px solid #8a4f07;
-}
-
-header .buscar .icono {
-    color: #8a4f07;
-    position: absolute;
-    right: 0;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 6px;
-    font-size: 16px;
-    line-height: 16px;
-}
-
-header .buscar .icono:hover {
-    color: #8a4f07;
-}
-
-header .menu {
-    display: inline-block;
-}
-
-header .menu ul {
-    list-style: none;
-}
-
-header .menu ul li {
-    display: inline-block;
-    line-height: 70px;
-}
-
-header .menu ul li a {
+    width: 100%;
     color: #fff;
-    display: block;
-    padding: 0px 20px;
-    font-weight: bold;
+    margin-bottom: 0px;
+    background: #f5f0df;
+    padding-bottom: 10px;
 }
 
-header .menu ul li a:hover {
-    background: #000;
+.header .logo {
+    height: 110px;
+    width: 100%;
+}
+
+div#imagen {
+    background-image: url(../logoGalleryApp/museo.jpg);
+    min-height: 500px;
+    opacity: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.pregunta {
+    text-align: center;
+    margin: auto;
+    font-family: 'Raleway', sans-serif;
+    font-size: 25px;
+    color: #8a4f07;
+    padding-left: 5px;
+    background-color: #f5f0df
+}
+
+.buscadorP select {
+    max-width: 500px;
+    min-width: 500px;
+    border-radius: 20px 0px 0px 20px;
+}
+
+.buscador button {
+    line-height: 3.3;
+    height: 50px;
+    width: 34px;
+    border-radius: 0px 20px 20px 0px;
+    padding: 0%;
+    cursor: pointer;
+    background-color: #f5f0df;
+    border: none;
+}
+
+.formbuscador {
+    text-align: center;
+    padding: 15px;
+    margin: auto;
+    width: 100%;
+}
+
+select {
+    height: 50px !important;
+    text-align: center !important;
+    appearance: none;
+    border: none;
+    font-family: 'Raleway', sans-serif !important;
+    line-height: 1;
+    background-color: #f5f0df;
+    outline: none;
+    font-size: 20px !important;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.post {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    margin-top: 0px;
+}
+
+.thumb {
+    height: 150px;
+    width: 100%;
+    position: relative;
+}
+
+.post article {
+    margin: 0;
+    padding: 0;
+}
+
+.artistas {
+    position: relative;
+}
+
+.titulopost {
+    font-family: 'Amatic SC', cursive, sans-serif;
+    font-size: 30px;
     text-decoration: none;
 }
 
-header .menu ul li a .icono {
-    margin-left: 15px;
+.post {
+    background-color: #f5f0df;
+    padding: 0px 50px;
+}
+
+.thumb img {
+    left: 0;
+    top: 0;
+    float: left;
+    height: 100px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    float: left;
+}
+
+.thumbobra {
+    padding: 10px;
+    left: 0;
+    top: 0;
+    height: auto;
+    max-width: 30%;
+    object-fit: cover;
+    border-radius: 10px;
+    padding-right: 10px;
+}
+
+.mapa {
+    padding: 0px;
+}
+
+iframe {
+    width: 100% !important;
+    height: auto !important;
+}
+
+.mapa {
+    margin: 20px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.fecha {
+    padding: 10px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.extracto {
+    z-index: 100;
+    font-family: 'Raleway', sans-serif;
+}
+
+.post-blog {
+    padding-top: 50px;
+    background-color: #f5f0df;
+    padding-left: 200px;
+    padding-right: 200px;
+    width: 100%;
+}
+
+.titulopost-blog {
+    font-family: 'Amatic SC', cursive, sans-serif;
+    font-size: 60px;
+    text-decoration: none;
+}
+
+.titulopost-blog a {
+    font-family: 'Amatic SC', cursive, sans-serif;
+    font-size: 60px;
+    text-decoration: none;
+    padding-left: 10px;
+}
+
+.extracto-blog {
+    font-family: 'Raleway', sans-serif !important;
+}
+
+.extracto-blog {
+    text-align: justify;
+}
+
+.thumb-blog {
+    float: left;
+}
+
+.thumb-blog img {
+    left: 0;
+    top: 0;
+    height: auto;
+    max-width: 50%;
+    float: left;
+    object-fit: cover;
+    border-radius: 10px;
+    padding-right: 10px;
+}
+
+.nombreautor {
+    padding: 10px;
+}
+
+.galeria-blog {
+    padding: 12px;
+}
+
+.nombre-galeria {
+    font-family: 'Raleway', sans-serif;
+    font-size: 30px;
+    color: #8a4f07;
+    text-decoration: none;
+}
+
+.telefono-galeria {
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    color: #8a4f07;
+    text-decoration: none;
+}
+
+.direccion-galeria {
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    color: #8a4f07;
+    text-decoration: none;
+}
+
+.artistas {
+    background-color: rgb(17, 17, 17);
+    padding-left: 20px;
+    padding-bottom: px;
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+
+.artistas h1 {
+    color: #f5f0df;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: 'Amatic SC', cursive, sans-serif;
+    font-size: 60px;
+}
+
+.pie {
+    font-family: 'Amatic SC', cursive, sans-serif;
+    text-align: center;
+    font-size: 30px;
+    text-decoration: none;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    background-color: #f5f0df;
+}
+
+
+/*
+Galeria artistas
+*/
+
+div.galeria-artistas {
+    margin-left: 100px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 32%;
+    background-color: black;
+}
+
+div.galeria-artistas:hover {
+    border: 1px solid #777;
+}
+
+div.galeria-artistas img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+div.desc {
+    padding: 15px;
+    height: 60px;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    background-color: #f5f0df;
+}
+
+@media all and (max-width: 770px) {
+    .header {
+        padding-bottom: 10px;
+        height: 60px;
+    }
+    .pregunta {
+        text-align: center;
+        margin: auto;
+        font-family: 'Raleway', sans-serif;
+        font-size: 15px;
+        color: #8a4f07;
+        padding-left: 5px;
+        background-color: #f5f0df
+    }
+    .logo-gallery {
+        max-height: 35px;
+    }
+    p.titulo-gallery a {
+        width: 80%;
+        font-family: 'Amatic SC', cursive, sans-serif;
+        font-size: 45px;
+        text-decoration: none;
+    }
+    div#imagen {
+        background-image: url(../logoGalleryApp/museo.jpg);
+        min-height: 500px;
+        opacity: 70%;
+    }
+    .buscadorP select {
+        text-align: center;
+        /* max-width: 100px; */
+        min-width: 100px;
+        border-radius: 20px 0px 0px 20px;
+    }
+    .buscador button {
+        line-height: 3.3;
+        height: 50px;
+        border-radius: 0px 20px 20px 0px;
+        padding: 0%;
+        cursor: pointer;
+    }
+    .formbuscador {
+        padding-top: 15px;
+        margin: auto;
+        width: 70%;
+    }
+    select {
+        text-align: center;
+        font-family: 'Raleway', sans-serif;
+        line-height: 1;
+        background-color: #f5f0df;
+        outline: none;
+        font-size: 40px;
+    }
+    select:hover {
+        color: #807143;
+    }
+    .post-blog {
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 100%;
+    }
+    .post {
+        padding-left: 10px;
+        padding-right: 10px;
+        /* background-color: black; */
+    }
+    div.galeria-artistas {
+        margin-left: 100px;
+        margin: 5px;
+        border: 1px solid #ccc;
+        float: left;
+        width: 200px;
+        background-color: black;
+    }
+    div.galeria-artistas img {
+        width: 198px;
+        height: 180px;
+        object-fit: cover;
+    }
+    .artistas {
+        background-color: rgb(17, 17, 17);
+        padding-left: 20px;
+        padding-bottom: 50px;
+        width: 100%;
+        height: 650px;
+        position: relative;
+    }
+}
+
+@media all and (max-width: 415px) {
+    .header {
+        padding-bottom: 10px
+    }
+    .pregunta {
+        text-align: center;
+        margin: auto;
+        font-family: 'Raleway', sans-serif;
+        font-size: 15px;
+        color: #8a4f07;
+        padding-left: 5px;
+        background-color: #f5f0df
+    }
+    .logo-gallery {
+        max-height: 35px;
+    }
+    p.titulo-gallery a {
+        width: 80%;
+        font-family: 'Amatic SC', cursive, sans-serif;
+        font-size: 45px;
+        text-decoration: none;
+    }
+    div#imagen {
+        background-image: url(../logoGalleryApp/museo.jpg);
+        min-height: 350px;
+        opacity: 70%;
+    }
+    .buscadorP select {
+        text-align: center;
+        max-width: 100px;
+        min-width: 100px;
+        border-radius: 20px 0px 0px 20px;
+    }
+    .buscador button {
+        line-height: 3.3;
+        height: 50px;
+        border-radius: 0px 20px 20px 0px;
+        padding: 0%;
+        cursor: pointer;
+    }
+    .formbuscador {
+        padding-top: 15px;
+        margin: auto;
+        width: 70%;
+    }
+    select {
+        text-align: center;
+        font-family: 'Raleway', sans-serif;
+        line-height: 1;
+        background-color: #f5f0df;
+        outline: none;
+        font-size: 40px;
+    }
+    select:hover {
+        color: #807143;
+    }
+    .post-blog {
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 100%;
+    }
+    div.galeria-artistas {
+        margin-left: 100px;
+        margin: 5px;
+        border: 1px solid #ccc;
+        float: left;
+        width: 200px;
+        background-color: black;
+    }
+    div.galeria-artistas img {
+        width: 198px;
+        height: 180px;
+        object-fit: cover;
+    }
+    .artistas {
+        background-color: rgb(17, 17, 17);
+        padding-left: 20px;
+        padding-bottom: 50px;
+        width: 100%;
+        height: 900px;
+        position: relative;
+    }
 }
