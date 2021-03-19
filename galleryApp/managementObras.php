@@ -6,7 +6,7 @@ require('Modelos/daoObra.php');
 
 $errores = '';
 try {
-    $daoObra = new DaoObra('gallery_app');
+    $daoObra = new DaoObra('smizgltb_gallery_app');
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }

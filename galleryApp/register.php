@@ -106,8 +106,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errores .= '<li>Por favor, rellena todos los datos correctamente</li>';
     } else {
         try {
-            $daoGaleria = new DaoGaleria("gallery_app");
-            $daoEncargado = new DaoEncargado("gallery_app");
+            $daoGaleria = new DaoGaleria("smizgltb_gallery_app");
+            $daoEncargado = new DaoEncargado("smizgltb_gallery_app");
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }

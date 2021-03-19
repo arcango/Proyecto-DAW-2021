@@ -23,9 +23,9 @@
         <h1 class="titulo">Administración de Encargados</h1>
         <div class="botones_navegacion">
 
-            <button class="boton-navegacion"><a href="register.php">Registrar Nuevo Usuario</a></button>
-
             <button class="boton-navegacion"><a href="index.php">Ir a la página principal</a></button>
+            <button class="boton-navegacion"><a href="register.php">Registrar Nuevo Usuario</a></button>
+            <button class="boton-navegacion"><a href="listaUsuarios.php">Administrar Usuarios</a></button>
         </div>
         <?php if (!empty($errores)) : ?>
             <div class="errores">

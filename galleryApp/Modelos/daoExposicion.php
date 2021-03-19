@@ -80,7 +80,7 @@ class DaoExposicion extends Conexion
         if (count($this->returnData) === 0) {
             echo '<h2>No tienes todavía ninguna exposición</h2>';
         } else {
-            foreach($this->returnData as $row) {
+            foreach ($this->returnData as $row) {
                 $exposicion = new Exposicion();
 
                 $exposicion->__SET("id_exposicion", $row["id_exposicion"]);
@@ -92,13 +92,12 @@ class DaoExposicion extends Conexion
                 $exposicion->__SET("cartel", $row["cartel"]);
                 $exposicion->__SET("descripcion_cartel", $row["descripcion_cartel"]);
                 $exposicion->__SET("texto_exposicion", $row["texto_exposicion"]);
-            
+
                 $this->Exposiciones[] = $exposicion;
-            
             }
-            
+
             $this->Query($queryArtista, $parameter);
-            foreach($this->returnData as $row) {
+            foreach ($this->returnData as $row) {
 
                 $artista = new Artista();
 
@@ -113,7 +112,7 @@ class DaoExposicion extends Conexion
             }
 
             $this->Query($queryObra, $parameter);
-            foreach($this->returnData as $row) {
+            foreach ($this->returnData as $row) {
                 $obra = new Obra();
 
                 $obra->__SET("id_obra", $row["id_obra"]);
@@ -128,10 +127,10 @@ class DaoExposicion extends Conexion
 
             $html = '';
             $numero_exposicion = 1;
-            foreach($this->Exposiciones as $exposicion) {
-            $html .= '<table class="tabla">';
-            $html .= "<thead class='t-head'><tr><th colspan='8' class='diferenciador'>Exposición $numero_exposicion</th></tr></thead>";
-            $html .= '<tr class="t-head"><th >Selección</th><th>Id Exposición</th><th>Nombre Exposición</th><th>Fecha de Inicio</th><th>Fecha de Finalización</th>';
+            foreach ($this->Exposiciones as $exposicion) {
+                $html .= '<table class="tabla">';
+                $html .= "<thead class='t-head'><tr><th colspan='8' class='diferenciador'>Exposición $numero_exposicion</th></tr></thead>";
+                $html .= '<tr class="t-head"><th >Selección</th><th>Id Exposición</th><th>Nombre Exposición</th><th>Fecha de Inicio</th><th>Fecha de Finalización</th>';
                 $id_expo = $exposicion->id_exposicion;
                 $html .= "<tr><td class='td-check'><input type='checkbox' name='check[]' value='$id_expo' class='form-control'></td>";
                 $html .= "<th>$id_expo</th>";
@@ -150,12 +149,7 @@ class DaoExposicion extends Conexion
             }
 
             echo $html;
-
-
-
-            
         }
-
     }
 
     public function insertar($exposicion)
@@ -170,8 +164,8 @@ class DaoExposicion extends Conexion
             ":fecha_inicio" => $exposicion->__GET("fecha_inicio"),
             ":fecha_fin" => $exposicion->__GET("fecha_fin"),
             ":cartel" => $exposicion->__GET("cartel"),
-            ":descripcion_cartel" =>$exposicion->__GET("descripcion_cartel"),
-            ":texto_exposicion" =>$exposicion->__GET("texto_exposicion")
+            ":descripcion_cartel" => $exposicion->__GET("descripcion_cartel"),
+            ":texto_exposicion" => $exposicion->__GET("texto_exposicion")
         );
         $this->Query($query, $parameter);
     }
@@ -188,8 +182,8 @@ class DaoExposicion extends Conexion
             ":fecha_inicio" => $exposicion->__GET("fecha_inicio"),
             ":fecha_fin" => $exposicion->__GET("fecha_fin"),
             ":cartel" => $exposicion->__GET("cartel"),
-            ":descripcion_cartel" =>$exposicion->__GET("descripcion_cartel"),
-            ":texto_exposicion" =>$exposicion->__GET("texto_exposicion"),
+            ":descripcion_cartel" => $exposicion->__GET("descripcion_cartel"),
+            ":texto_exposicion" => $exposicion->__GET("texto_exposicion"),
             ":id_exposicion" => $exposicion->__GET("id_exposicion")
         );
         $this->Query($query, $parameter);
@@ -198,7 +192,7 @@ class DaoExposicion extends Conexion
     public function eliminar($id_exposicion)
     {
         $query = "DELETE FROM exposicion WHERE id_exposicion = :id_exposicion";
-        $parameter = array(":id_exposicion"=>$id_exposicion);
+        $parameter = array(":id_exposicion" => $id_exposicion);
         $this->Query($query, $parameter);
     }
 }

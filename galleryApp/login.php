@@ -26,12 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         
         try {
-            $daoEncargado = new DaoEncargado("gallery_app");
+            $daoEncargado = new DaoEncargado("smizgltb_gallery_app");
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
         try {
-            $daoAdmin = new DaoAdmin("gallery_app");
+            $daoAdmin = new DaoAdmin("smizgltb_gallery_app");
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }

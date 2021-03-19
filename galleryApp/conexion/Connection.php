@@ -6,8 +6,8 @@ class Conexion {
 	private $connection;
 	private $dataBase;
 	private $host = "localhost";
-	private $user = "root";
-	private $password="";
+	private $user = "smizgltb_canchal";
+	private $password="tsohsucul";
 	public $returnData;          
 	
 	

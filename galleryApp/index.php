@@ -4,7 +4,7 @@ require('Modelos/daoBusqueda.php');
 
 $errores = '';
 try {
-    $daoBusqueda = new DaoBusqueda("gallery_app");
+    $daoBusqueda = new DaoBusqueda("smizgltb_gallery_app");
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }

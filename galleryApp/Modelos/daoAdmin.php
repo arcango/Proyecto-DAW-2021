@@ -32,7 +32,7 @@ class DaoAdmin extends Conexion
         }
     }
 
-    function listarEncargados()
+    public function listarEncargados()
     {
 
         $query = "SELECT e.id_encargado, e.nombre_encargado, e.activo, g.nombre_galeria

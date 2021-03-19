@@ -19,8 +19,9 @@
         </p>
         <h1 class="titulo">Registro</h1>
         <p class="botones_navegacion">
-            <button class="boton-navegacion"><a href="admin.php">Gestionar Encargados</a></button>
             <button class="boton-navegacion"><a href="index.php">Ir a la página principal</a></button>
+            <button class="boton-navegacion"><a href="admin.php">Gestionar Encargados</a></button>
+            <button class="boton-navegacion"><a href="listaUsuarios.php">Administrar Usuarios</a></button>
         </p>
         <br>
         <hr class="border">

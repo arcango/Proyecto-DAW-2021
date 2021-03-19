@@ -6,9 +6,9 @@ require('Modelos/daoAdmin.php');
 
 $errores = '';
 try {
-    $daoEncargado = new DaoEncargado('gallery_app');
-    $daoGaleria = new DaoGaleria('gallery_app');
-    $daoAdmin = new DaoAdmin('gallery_app');
+    $daoEncargado = new DaoEncargado('smizgltb_gallery_app');
+    $daoGaleria = new DaoGaleria('smizgltb_gallery_app');
+    $daoAdmin = new DaoAdmin('smizgltb_gallery_app');
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }

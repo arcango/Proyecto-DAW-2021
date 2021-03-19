@@ -31,6 +31,35 @@ class DaoUsuario extends Conexion
         }
     }
 
+    public function listarUsuarios()
+    {
+
+        $query = "SELECT id_usuario, nombre_usuario, email_usuario, mensaje_usuario
+        FROM usuario";
+
+        $this->Query($query, array());
+
+        $html = '';
+        $html .= '<table class="tabla">';
+        foreach ($this->returnData as $row) {
+            $usuario = new Usuario();
+
+            $usuario->__SET("id_usuario", $row["id_usuario"]);
+            $usuario->__SET("nombre_usuario", $row["nombre_usuario"]);
+            $usuario->__SET("email_usuario", $row["email_usuario"]);
+            $usuario->__SET("mensaje_usuario", $row["mensaje_usuario"]);
+
+            $this->Usuarios[] = $usuario;
+            $id_usuario = $usuario->id_usuario;
+            $html .= '<tr class="t-head"><th>Selección</th><th>Nombre Usuario</th><th>Correo Electrónico</th></tr>';
+            $html .= "<tr><td class='td-check'><input type='checkbox' name='check[]' value='$usuario->id_usuario' class='form-control'></td>";
+            $html .= "<td>$usuario->nombre_usuario</td><td>$usuario->email_usuario</td></tr>";
+            $html .= "<tr><td colspan='3'><textarea name='texto_usuario' value='$usuario->mensaje_usuario' rows='30' cols='100%' class='form-control'>$usuario->mensaje_usuario</textarea></td></tr>";
+        }
+        $html .= "</table>";
+        echo $html;
+    }
+
     public function obtenerUsuario($id)
     {
         $query = "SELECT * FROM usuario WHERE id_usuario = :id_usuario";
@@ -83,7 +112,7 @@ class DaoUsuario extends Conexion
     public function eliminar($id_usuario)
     {
         $query = "DELETE FROM usuario WHERE id_usuario = :id_usuario";
-        $parameter = array(":id_usuario"=>$id_usuario);
+        $parameter = array(":id_usuario" => $id_usuario);
         $this->Query($query, $parameter);
     }
 }

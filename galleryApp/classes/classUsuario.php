@@ -4,6 +4,7 @@ class Usuario {
 
     private $nombre_usuario;
     private $email_usuario;
+    private $mensaje_usuario;
 
     public function __GET($propiedad) {
         return $this->$propiedad;
