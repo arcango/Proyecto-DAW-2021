@@ -432,6 +432,10 @@ div#imagen {
     border-radius: 20px 0px 0px 20px;
 }
 
+.buscadorP select:hover {
+    background-color: #eccfac;
+}
+
 .buscador button {
     line-height: 3.3;
     height: 50px;
@@ -441,6 +445,10 @@ div#imagen {
     cursor: pointer;
     background-color: #f5f0df;
     border: none;
+}
+
+.buscador button:hover {
+    background-color: #eccfac;
 }
 
 .formbuscador {

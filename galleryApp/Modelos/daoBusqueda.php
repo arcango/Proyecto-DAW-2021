@@ -27,7 +27,7 @@ class DaoBusqueda extends Conexion
         $this->Exposicion = array();
         // $hoy = date("Y-m-d");
 
-        $query = "SELECT SQL_CALC_FOUND_ROWS g.nombre_galeria, g.direccion, g.localidad, g.provincia,
+        $query = "SELECT SQL_CALC_FOUND_ROWS en.g.nombre_galeria, g.direccion, g.localidad, g.provincia,
             g.telefono, g.g_map, e.id_exposicion, e.nombre_exposicion, e.fecha_inicio, e.fecha_fin, e.cartel,
             e.descripcion_cartel,e.texto_exposicion
             FROM museo_galeria g
@@ -158,7 +158,7 @@ class DaoBusqueda extends Conexion
                         $html .= "<p class='extracto-blog'>$exposicion->texto_exposicion</p>";
                         $html .= "</div>";
                         $html .= "<br>";
-                        $html .= "<div class='autorobra-blog>";
+                        $html .= "<div class='autorobra-blog'>";
                         $html .= "<a class='thickbox' href='./imagenesEsculturas/$obra->imagen'>";
                         $html .= "<img class='thumbobra' src='./imagenesEsculturas/$obra->imagen' alt='$obra->descripcion_alt' />";
                         $html .= "</a>";
@@ -186,22 +186,21 @@ class DaoBusqueda extends Conexion
     public function listarYPrintarArtistasRandom()
     {
         $html = '';
-
-        $queryRandom = "SELECT id_artista FROM artista";
+      
+        $queryRandom = "SELECT id_artista FROM artista ORDER BY rand() LIMIT 3";
         $this->Query($queryRandom, array());
-        $random = count($this->returnData);
-        
-
-        for ($i = 0; $i <= 2; $i++) {
+        foreach($this->returnData as $id) {
+            
+            $id = $id['id_artista'];
+            
             $this->Artista = array();
             $this->Obra = array();
-            $random = random_int(1, $random);
             
             $query = "SELECT a.nombre_artista, a.pagina_personal, o.imagen, o.descripcion_alt
             FROM artista a 
             INNER JOIN obra o 
             ON a.id_artista = o.obra_id_artista
-            WHERE id_artista = $random
+            WHERE id_artista = $id
             LIMIT 1";
 
             $this->Query($query, array());
@@ -232,6 +231,15 @@ class DaoBusqueda extends Conexion
             }
             echo $html;
             $html = '';
-        }
+
+
+
+        };
+        
+  
+        
+
+        
+        
     }
 }

@@ -31,7 +31,7 @@ if ((isset($_GET['id'])) && ($_GET['id']) > 0) {
   ?>
   <br>
 <div class="pie">
-        <h2>Contacta con nosotros</h2>
+        <h2><a href="contacto.php">Contacta con nosotros</a></h2>
     </div>
 </body>
 </html>

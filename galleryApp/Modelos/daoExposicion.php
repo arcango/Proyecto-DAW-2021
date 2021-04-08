@@ -4,6 +4,8 @@
 require_once("./classes/classExposicion.php");
 require_once("./classes/classObra.php");
 require_once("./classes/classArtista.php");
+require_once("./classes/classEncargado.php");
+
 // Datos de la conexión a la base de datos
 require_once("./conexion/Connection.php");
 

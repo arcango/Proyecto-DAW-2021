@@ -5,9 +5,9 @@ class Conexion {
 
 	private $connection;
 	private $dataBase;
-	private $host = "localhost";
-	private $user = "smizgltb_canchal";
-	private $password="tsohsucul";
+	private $host = "";
+	private $user = "";
+	private $password="";
 	public $returnData;          
 	
 	

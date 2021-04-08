@@ -6,9 +6,9 @@ require('Modelos/daoExposicion.php');
 
 $errores = '';
 try {
-    $daoArtista = new DaoArtista('smizgltb_gallery_app');
-    $daoObra = new DaoObra('smizgltb_gallery_app');
-    $daoExposicion = new DaoExposicion('smizgltb_gallery_app');
+    $daoArtista = new DaoArtista('');
+    $daoObra = new DaoObra('');
+    $daoExposicion = new DaoExposicion('');
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }

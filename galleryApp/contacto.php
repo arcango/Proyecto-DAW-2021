@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if(!empty($nombre_usuario) && !empty($email) && !empty($texto_usuario)) {
         try {
-            $daoUsuario = new DaoUsuario("smizgltb_gallery_app");
+            $daoUsuario = new DaoUsuario("");
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
